@@ -1,0 +1,183 @@
+
+
+body {
+align-items: center;
+height: auto;
+width: 100%;
+}
+
+.main {
+    background-color: rgb(250, 247, 249);
+    border: .1vw solid rgb(24, 10, 10);
+    border-radius: 3vh;
+    max-height: 100%;
+    width: auto;
+    margin-left: 30vw;
+    margin-right: 5vw;
+margin-top: 15vw;
+    position: absolute;
+    
+}
+
+.main2 {
+    text-align: left;
+padding-left: 1vw;
+padding-right: 5vw;
+}
+
+.btn {
+    background-color: rgba(12, 2, 36, 0.637);
+    border: none;
+    color: white;
+    padding: 1vh 1vw;
+    font-size: 1.7vh;
+    cursor: pointer;
+    border-radius: 2vh;
+
+
+
+}
+
+#twitter:hover {
+    background-color: #2a7be4;
+}
+
+#instagram:hover {
+    background-color: #a81608;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#gmail:hover {
+    background-color: #0a7a23;
+}
+
+#linkin:hover {
+    background-color: #0077b5;
+}
+
+#education,
+#hometown {
+    color: blue;
+}
+
+#pfpic {
+
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    float: left;
+    padding-top: 15px;
+
+}
+
+.name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5vh;
+    color: rgba(41, 37, 37, 0.808);
+    line-height: 32px;
+    margin: 1vh;
+    padding-left: 70px;
+
+}
+
+span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgba(53, 56, 56, 0.767);
+    padding-left: 20px;
+
+}
+
+#info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-bottom: 1px;
+    color: black;
+
+}
+
+footer {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5vh;
+    
+}
+
+.progress {
+    background-color: #EA4335;
+    height: 3px;
+    animation: load 1s ease-in-out;
+    width: 1px;
+}
+
+@keyframes load {
+    0% {
+        width: 0px;
+    }
+
+    50% {
+        width: 50%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.ba-img {
+    position: relative;
+   /* Set rules to fill background */
+min-height: 100%;
+min-width: 1024px;
+
+/* Set up proportionate scaling */
+width: 100%;
+height: auto;
+
+/* Set up positioning */
+position: fixed;
+top: 0;
+left: 0;
+   /* Set rules to fill background */
+min-height: 100%;
+min-width: 1024px;
+
+/* Set up proportionate scaling */
+width: 100%;
+height: auto;
+
+/* Set up positioning */
+position: fixed;
+top: 0;
+left: 0;
+   /* Set rules to fill background */
+min-height: 100%;
+min-width: 1024px;
+
+/* Set up proportionate scaling */
+width: 100%;
+height: auto;
+
+/* Set up positioning */
+position: fixed;
+top: 0;
+left: 0;
+   /* Set rules to fill background */
+min-height: 100%;
+min-width: 1024px;
+
+/* Set up proportionate scaling */
+width: 100%;
+height: auto;
+
+/* Set up positioning */
+position: fixed;
+top: 0;
+left: 0;
+
+}
