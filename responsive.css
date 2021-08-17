@@ -1,10 +1,10 @@
-@media screen and (max-width:900px) {
+@media screen and (max-width:700px) {
     
 
 
     body {
         align-items: center;
-        height: 100%;
+        height: auto;
         width: 100%;
         }
         
@@ -12,9 +12,8 @@
             background-color: rgb(250, 247, 249);
             border: .1vw solid rgb(24, 10, 10);
             border-radius: 3vh;
-            height: 50%;
-            width: auto;
-            max-height: 100%;
+            height: auto;
+            width: 70vw;
             margin-left: 7vw;
             margin-right: 5vw;
         margin-top: 20vw;
@@ -24,7 +23,7 @@
         
         .main2 {
             text-align: left;
-        padding-left: 1vw;
+        padding-left: 5vw;
         padding-right: 5vw;
         }
         
