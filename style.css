@@ -26,13 +26,14 @@ padding-right: 5vw;
 }
 
 .btn {
-    background-color: rgba(12, 2, 36, 0.637);
+    background-color: rgb(19, 8, 6);
     border: none;
     color: white;
-    padding: 1vh 1vw;
-    font-size: 1.7vh;
+    font-size: 1.8vh;
     cursor: pointer;
-    border-radius: 2vh;
+    border-radius: 5vh;
+   padding: 1vh;
+   margin: 0.1vh;
 
 
 
@@ -43,7 +44,7 @@ padding-right: 5vw;
 }
 
 #instagram:hover {
-    background-color: #a81608;
+    background-color: #f73729;
 
 }
 
