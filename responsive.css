@@ -1,10 +1,10 @@
-@media screen and (max-width:700px) {
+@media screen and (max-width:800px) {
     
 
 
     body {
         align-items: center;
-        height: auto;
+        height: 100%;
         width: 100%;
         }
         
@@ -13,8 +13,8 @@
             border: .1vw solid rgb(24, 10, 10);
             border-radius: 3vh;
             height: auto;
-            width: 70vw;
-            margin-left: 7vw;
+            width: auto;
+            margin-left: 5vw;
             margin-right: 5vw;
         margin-top: 20vw;
             position: absolute;
@@ -28,14 +28,14 @@
         }
         
         .btn {
-            background-color: rgba(12, 2, 36, 0.637);
+            background-color: rgb(19, 8, 6);
             border: none;
             color: white;
             padding: 1vh 1vw;
             font-size: 2vh;
             cursor: pointer;
             border-radius: 4vh;
-        
+            margin: 0.2vh;
         
         
         }
@@ -45,7 +45,7 @@
         }
         
         #instagram:hover {
-            background-color: #a81608;
+            background-color: #f73729;
         
         }
         
