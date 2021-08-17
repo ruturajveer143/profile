@@ -28,14 +28,15 @@
         }
         
         .btn {
-            background-color: rgb(19, 8, 6);
-            border: none;
-            color: white;
-            padding: 1vh 1vw;
-            font-size: 2vh;
-            cursor: pointer;
-            border-radius: 4vh;
-            margin: 0.2vh;
+            background-color: rgb(19, 
+8, 6);
+ border: none;
+ color: white;
+ padding: 1vh 1vw;
+ font-size: 1.8vh;
+ cursor:pointer;
+ border-radius: 4vh;
+ margin: 0.2vh;
         
         
         }
