@@ -55,32 +55,32 @@
       button.disabled = true;
       button.innerText = "Submitting...";
 
-      // Replace this with your actual Google Apps Script web app URL
+      
       fetch("https://script.google.com/macros/s/AKfycbx9gTbZar23cIVPkyEXktNH-Cnl8aeSI4cqisyPcaSFjYdQoaZfC2I9cqnXy3CPz4g2hw/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Server returned an error: " + response.statusText);
-        }
-        return response.text(); // or `response.json()` if the server sends JSON data
-      })
-      .then((result) => {
-        alert("Form submitted successfully!");
-        form.reset();
-        button.disabled = false;
-        button.innerText = "Submit";
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("There was an error submitting the form. Please try again.");
-        button.disabled = false;
-        button.innerText = "Submit";
-      });
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type": "application/json",
+  },
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Server returned an error: " + response.statusText);
+    }
+    return response.text();
+  })
+  .then((result) => {
+    alert("Form submitted successfully!");
+    form.reset();
+    button.disabled = false;
+    button.innerText = "Submit";
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+    alert("There was an error submitting the form. Please try again.");
+    button.disabled = false;
+    button.innerText = "Submit";
+     });
     });
   </script>
 </body>
