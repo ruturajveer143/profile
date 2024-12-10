@@ -242,8 +242,8 @@ footer {
 
 #popup .popup-content {
     background: #ffffff; /* Clean white background */
-    border-radius: 15px; /* Smooth rounded corners */
-    width: 85%; /* Reduced width for a compact design */
+    border-radius: 20px; /* Smooth rounded corners */
+    width: 80%; /* Reduced width for a compact design */
     max-width: 350px; /* Limit the maximum size */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
     display: flex;
@@ -255,8 +255,9 @@ footer {
 #popup .chat-header {
     background: #128C7E; /* WhatsApp dark green */
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 15px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -267,7 +268,7 @@ footer {
     background: transparent;
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
@@ -283,6 +284,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
     overflow-y: auto;
     font-size: 0.9rem;
 }
@@ -303,10 +305,10 @@ footer {
 
 #popup .chat-form input,
 #popup .chat-form textarea {
-    width: 100%;
+    width: 95%;
     padding: 14px; /* Slightly increased padding */
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #828282;
+    border-radius: 10px;
     font-size: 1rem;
     outline: none;
     transition: border 0.3s ease;
@@ -319,12 +321,13 @@ footer {
 
 #popup .chat-form button {
     background: #25D366; /* WhatsApp green */
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1.1rem; /* Slightly larger font */
     border: none;
     border-radius: 25px; /* Rounded button */
-    padding: 12px 20px; /* Larger button size */
+    padding: 10px 15px; /* Larger button size */
     cursor: pointer;
+    margin-left: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -334,7 +337,7 @@ footer {
 }
 
 #popup .chat-form button:hover {
-    background: #1da851;
+    background: #147739;
     transform: translateY(-2px); /* Lift effect */
 }
 
