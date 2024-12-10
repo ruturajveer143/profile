@@ -10,14 +10,12 @@
     <title>Ruturaj Veer | Contact Card</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-         <link href="image.png" rel="icon">
-  <link href="image.png" rel="apple-touch-icon">
-<!--     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-color='red'>R</text></svg>"> -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-color='red'>R</text></svg>">
 </head>
 <body>
     <div class="linkedin-card">
         <div class="cover-section">
-            <img src="cover-page.jpg" alt="Cover Image" class="cover-img">
+            <img src="/cover-page.jpg" alt="Cover Image" class="cover-img">
         </div>
         <div class="profile-section">
             <img src="dev.gif" alt="Profile Picture" class="profile-img">
@@ -34,13 +32,84 @@
                     </a>
                 <a href="https://github.com/ruturajveer143" class="social-btn github"><i class="fab fa-github" target="_blank"></i> GitHub</a>
                 <a href="mailto:vruturaj633@gmail.com" class="social-btn email"><i class="fas fa-envelope" target="_blank"></i> Email</a>
-                <a href="contact.html" class="social-btn whatsapp" target="_blank">
+                <a href="#" class="social-btn whatsapp" onclick="showPopup(event)">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 
             </div>
         </div>
+        
+        <div class="popup" id="popup">
+            <div class="popup-content whatsapp-chat">
+                <div class="chat-header">
+                    <i class="fab fa-whatsapp"> </i>
+                    <span>Ruturaj Veer</span>
+                    <button class="popup-close" onclick="closePopup()">×</button>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-message incoming">
+                        <span>Hello! How can I help you today?</span>
+                    </div>
+                </div>
+                <form class="chat-form" onsubmit="sendWhatsAppMessage(event)">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="tel" id="mobile" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10}">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="2" required></textarea>
+                    <button type="submit">
+                        <i class="fab fa-whatsapp"></i> Send
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        
         <footer>&copy; 2024 Ruturaj Veer</footer>
     </div>
+    <script>
+       function showPopup(event) {
+    event.preventDefault(); // Prevent default link behavior
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+function sendWhatsAppMessage(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Collect form data
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+    const message = document.getElementById("message").value;
+
+    // Prepare data for Formspree submission
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("phone", mobile);
+    formData.append("message", message);
+
+    // Submit data to Formspree
+    fetch("https://formspree.io/f/mjkvdoll", {
+        method: "POST",
+        body: formData,
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+    // Wait for 1 second before opening the WhatsApp link
+    setTimeout(() => {
+        const whatsappUrl = `https://wa.me/919764152416?text=${encodeURIComponent(
+            `Hello, I am ${name}.\nMy mobile number is ${mobile}.\nMessage: ${message}`
+        )}`;
+        window.open(whatsappUrl, "_blank"); // Open WhatsApp link
+        closePopup(); // Close the popup after opening the link
+    }, 1500); // 1-second delay
+}
+
+
+
+    </script>
 </body>
 </html>
