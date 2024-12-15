@@ -101,12 +101,33 @@ function sendWhatsAppMessage(event) {
 
     // Wait for 1 second before opening the WhatsApp link
     setTimeout(() => {
-        const whatsappUrl = `https://wa.me/919764152416?text=${encodeURIComponent(
-            `Hello, I am ${name}.\nMy mobile number is ${mobile}.\nMessage: ${message}`
-        )}`;
-        window.open(whatsappUrl, "_blank"); // Open WhatsApp link
-        closePopup(); // Close the popup after opening the link
-    }, 1500); // 1-second delay
+    // Create a popup element
+    const popup = document.createElement("div");
+    popup.textContent = "Thank you for connecting, Ruturaj Veer will connect with you shortly.";
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "#fff";
+    popup.style.border = "2px solid #333";
+    popup.style.padding = "20px";
+    popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+    popup.style.zIndex = "9999";
+    popup.style.fontFamily = "Arial, sans-serif";
+    popup.style.textAlign = "center";
+
+    document.body.appendChild(popup);
+
+    // Remove the popup after 2-3 seconds
+    setTimeout(() => {
+        document.body.removeChild(popup);
+
+        // Open WhatsApp link
+        const whatsappUrl = `https://ruturajveer143.github.io/profile/`)}`;
+        window.open(whatsappUrl, "_blank");
+    }, 2500); // Adjust delay as needed (2.5 seconds here)
+}, 1000); // Initial delay before showing popup
+
 }
 
 
