@@ -64,22 +64,28 @@
             </div>
         </div>
         
-        <p id="visitCount">Loading visits...</p>
+       <p id="visitCount">Loading visits...</p>
         <footer>&copy; 2024 Ruturaj Veer</footer>
     </div>
        
 
 
 
+
+
 <script>
 fetch("https://script.google.com/macros/s/AKfycbz0hGOt-LCuoLutOQRbO2F2l9d0vLVA1S58FGPgW30mZCzESgFZppybqPd0tm5jRrcgMg/exec")
-  .then(res => res.json())
+  .then(res => {
+    console.log("Response status:", res.status);
+    return res.json();
+  })
   .then(data => {
+    console.log("Data:", data);
     document.getElementById("visitCount").textContent = "Total Visits: " + data.count;
   })
   .catch(error => {
+    console.error("Fetch error:", error);
     document.getElementById("visitCount").textContent = "Visit count unavailable";
-    console.error("Error fetching count:", error);
   });
 </script>
 
