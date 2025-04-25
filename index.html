@@ -64,19 +64,22 @@
             </div>
         </div>
         
-        <div id="visitCount">Loading visits...</div>
+        <p id="visitCount">Loading visits...</p>
         <footer>&copy; 2024 Ruturaj Veer</footer>
     </div>
        
 
+
+
 <script>
-fetch('https://api.countapi.xyz/hit/ruturajveer143/profile')
+fetch("https://script.google.com/macros/s/AKfycbz0hGOt-LCuoLutOQRbO2F2l9d0vLVA1S58FGPgW30mZCzESgFZppybqPd0tm5jRrcgMg/exec")
   .then(res => res.json())
   .then(data => {
-    document.getElementById("visitCount").textContent = "Total Visits: " + data.value;
+    document.getElementById("visitCount").textContent = "Total Visits: " + data.count;
   })
-  .catch(err => {
+  .catch(error => {
     document.getElementById("visitCount").textContent = "Visit count unavailable";
+    console.error("Error fetching count:", error);
   });
 </script>
 
