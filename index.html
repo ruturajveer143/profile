@@ -63,10 +63,19 @@
                 </form>
             </div>
         </div>
-        
+         <div id="visitCount"></div>
         
         <footer>&copy; 2024 Ruturaj Veer</footer>
     </div>
+       
+<script>
+fetch('https://api.counterapi.dev/v1/ruturajveer143/profile')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visitCount").textContent = "Total Visits: " + data.count;
+  });
+</script>
+
     <script>
        function showPopup(event) {
     event.preventDefault(); // Prevent default link behavior
