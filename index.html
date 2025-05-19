@@ -63,38 +63,50 @@
     </footer>
   </div>
 
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDVXI5VvxM3bhRV9ChMBANtH0EtjGkBZMI",
-      authDomain: "ruturaj-veer.firebaseapp.com",
-      databaseURL: "https://ruturaj-veer-default-rtdb.firebaseio.com",
-      projectId: "ruturaj-veer",
-      storageBucket: "ruturaj-veer.appspot.com",
-      messagingSenderId: "168086635691",
-      appId: "1:168086635691:web:eedec947d385a3b53ae3ee"
-    };
+ <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDVXI5VvxM3bhRV9ChMBANtH0EtjGkBZMI",
+    authDomain: "ruturaj-veer.firebaseapp.com",
+    databaseURL: "https://ruturaj-veer-default-rtdb.firebaseio.com",
+    projectId: "ruturaj-veer",
+    storageBucket: "ruturaj-veer.appspot.com",
+    messagingSenderId: "168086635691",
+    appId: "1:168086635691:web:eedec947d385a3b53ae3ee"
+  };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-    const counterRef = db.ref("visitorCount");
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const siteDataRef = db.ref("siteData");
 
-    // Increment counter
-   counterRef.transaction(current => {
-  if (current === null || current === undefined) {
-    return 50000;
-  }
-  return current + 1;
-});
+  // Update & Display Visit Counter
+  const counterRef = db.ref("siteData/visitorCount");
+  counterRef.transaction(current => {
+    if (current === null || current === undefined) {
+      return 50000;
+    }
+    return current + 1;
+  });
 
-    // Display counter
-    counterRef.on("value", snapshot => {
-      const count = snapshot.val();
-      document.getElementById("visitCount").textContent = `[Total Visits: ${count} ]`;
-    });
-  </script>
+  counterRef.on("value", snapshot => {
+    const count = snapshot.val();
+    document.getElementById("visitCount").textContent = `[Total Visits: ${count} ]`;
+  });
+
+  // Load Profile Info
+  const profileRef = db.ref("siteData/profile");
+  profileRef.on("value", snapshot => {
+    const data = snapshot.val();
+    if (data) {
+      document.querySelector(".header h1").textContent = data.name;
+      document.querySelector(".title").innerHTML = `${data.title} | ${data.location} | <a href="${data.portfolio}" target="_blank">Portfolio</a>`;
+      document.querySelector(".linkedin").href = data.linkedin;
+      document.querySelector(".instagram").href = data.instagram;
+      document.querySelector(".github").href = data.github;
+      document.querySelector(".email").href = `mailto:${data.email}`;
+    }
+  });
+</script>
+
 
   <!-- WhatsApp Popup Logic -->
   <script>
@@ -124,6 +136,7 @@
       }).catch(error => {
         console.error("Error:", error);
       });
+      
 
       setTimeout(() => {
         const popup = document.createElement("div");
