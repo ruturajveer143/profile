@@ -1,175 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Hi, I am Ruturaj Veer" />
-        <meta name="keywords" content="Ruturaj Veer,Ruturaj, Ruturaj Gaikwad, Ruturaj, Veer, ruturaj, ruturaj veer, veer, hero, actres,  portfolio, IT student, web development, projects, skills" />
-    <title>Ruturaj Veer | Profile</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-     <link href="image.png" rel="icon">
-        <link href="image.png" rel="icon" type="image/x-icon">
-     <link href="image.png" rel="apple-touch-icon">
-        <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Ruturaj Veer",
-  "url": "https://ruturajveer143.github.io/profile/",
-  "logo": "https://ruturajveer143.github.io/profile/dev.gif"
-}
-</script>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hi, I am Ruturaj Veer" />
+  <meta name="keywords" content="Ruturaj Veer,Ruturaj, Ruturaj Gaikwad, Ruturaj, Veer, ruturaj, ruturaj veer, veer, hero, actres,  portfolio, IT student, web development, projects, skills" />
+  <title>Ruturaj Veer | Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="image.png" rel="icon">
+  <link href="image.png" rel="apple-touch-icon">
 </head>
-        
+
 <body>
-    <div class="linkedin-card">
-        <div class="cover-section">
-            <img src="cover-page.jpg" alt="Cover Image" class="cover-img">
-        </div>
-        <div class="profile-section">
-            <img src="dev.gif" alt="Profile Picture" class="profile-img">
-        </div>
-        <div class="info-section">
-            <div class="header">
-                <h1>Ruturaj Veer</h1>
-            </div>
-            <p class="title">Software Developer | &nbsp;<span class="">Pune, Maharashtra</span></p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ruturaj-veer-143veer/" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://www.instagram.com/ruturaj.143/" class="social-btn instagram" target="_blank">
-    <i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://ruturajveer143.github.io/portfolio/" class="social-btn portfolio" target="_blank">
-                        <i class="fas fa-folder-open"></i> Portfolio
-                    </a>
-                <a href="https://github.com/ruturajveer143" class="social-btn github"><i class="fab fa-github" target="_blank"></i> GitHub</a>
-                <a href="mailto:vruturaj633@gmail.com" class="social-btn email"><i class="fas fa-envelope" target="_blank"></i> Email</a>
-                <a href="#" class="social-btn whatsapp" disabled onclick="showPopup(event)">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                
-            </div>
-        </div>
-        
-        <div class="popup" id="popup">
-            <div class="popup-content whatsapp-chat">
-                <div class="chat-header">
-                    <i class="fab fa-whatsapp"> </i>
-                    <span>Ruturaj Veer</span>
-                    <button class="popup-close" onclick="closePopup()">×</button>
-                </div>
-                <div class="chat-body">
-                    <div class="chat-message incoming">
-                        <span>Hello! How can I help you today?</span>
-                    </div>
-                </div>
-                <form class="chat-form" onsubmit="sendWhatsAppMessage(event)">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    <input type="tel" id="mobile" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10}">
-                    <textarea id="message" name="message" placeholder="Your Message" rows="2" required></textarea>
-                    <button type="submit">
-                        <i class="fab fa-whatsapp"></i> Send
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <footer>&copy; 2024 | Ruturaj Veer |
-        <span id="visitCount">Loading visits...</span>
-        </footer>
+  <div class="linkedin-card">
+    <div class="cover-section">
+      <img src="cover-page.jpg" alt="Cover Image" class="cover-img">
     </div>
-       
+    <div class="profile-section">
+      <img src="dev.gif" alt="Profile Picture" class="profile-img">
+    </div>
+    <div class="info-section">
+      <div class="header">
+        <h1>Ruturaj Veer</h1>
+      </div>
+      <p class="title">Software Developer | &nbsp;<span class="">Pune, Maharashtra</span></p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/ruturaj-veer-143veer/" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.instagram.com/ruturaj.143/" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://ruturajveer143.github.io/portfolio/" class="social-btn portfolio" target="_blank"><i class="fas fa-folder-open"></i> Portfolio</a>
+        <a href="https://github.com/ruturajveer143" class="social-btn github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:vruturaj633@gmail.com" class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+        <a href="#" class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
 
+    <div class="popup" id="popup">
+      <div class="popup-content whatsapp-chat">
+        <div class="chat-header">
+          <i class="fab fa-whatsapp"></i>
+          <span>Ruturaj Veer</span>
+          <button class="popup-close" onclick="closePopup()">×</button>
+        </div>
+        <div class="chat-body">
+          <div class="chat-message incoming">
+            <span>Hello! How can I help you today?</span>
+          </div>
+        </div>
+        <form class="chat-form" onsubmit="sendWhatsAppMessage(event)">
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+          <input type="tel" id="mobile" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10}">
+          <textarea id="message" name="message" placeholder="Your Message" rows="2" required></textarea>
+          <button type="submit"><i class="fab fa-whatsapp"></i> Send</button>
+        </form>
+      </div>
+    </div>
 
+    <footer>
+      &copy; 2024 | Ruturaj Veer |
+      <span id="visitCount">Loading visits...</span>
+    </footer>
+  </div>
 
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDVXI5VvxM3bhRV9ChMBANtH0EtjGkBZMI",
+      authDomain: "ruturaj-veer.firebaseapp.com",
+      databaseURL: "https://ruturaj-veer-default-rtdb.firebaseio.com",
+      projectId: "ruturaj-veer",
+      storageBucket: "ruturaj-veer.appspot.com",
+      messagingSenderId: "168086635691",
+      appId: "1:168086635691:web:eedec947d385a3b53ae3ee"
+    };
 
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const counterRef = db.ref("visitorCount");
 
-<script>
-fetch("https://script.google.com/macros/s/AKfycbz0hGOt-LCuoLutOQRbO2F2l9d0vLVA1S58FGPgW30mZCzESgFZppybqPd0tm5jRrcgMg/exec")
-  .then(res => {
-    console.log("Response status:", res.status);
-    return res.json();
-  })
-  .then(data => {
-    console.log("Data:", data);
-    document.getElementById("visitCount").textContent = "[Total Visits: " + data.count+" ]";
-  })
-  .catch(error => {
-          let x = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
-    document.getElementById("visitCount").textContent ="[Total Visits: " + x+" ]";
-  });
-</script>
+    // Increment counter
+   counterRef.transaction(current => {
+  if (current === null || current === undefined) {
+    return 50000;
+  }
+  return current + 1;
+});
 
+    // Display counter
+    counterRef.on("value", snapshot => {
+      const count = snapshot.val();
+      document.getElementById("visitCount").textContent = `[Total Visits: ${count} ]`;
+    });
+  </script>
 
-    <script>
-       function showPopup(event) {
-    event.preventDefault(); // Prevent default link behavior
-    document.getElementById("popup").style.display = "flex";
-}
+  <!-- WhatsApp Popup Logic -->
+  <script>
+    function showPopup(event) {
+      event.preventDefault();
+      document.getElementById("popup").style.display = "flex";
+    }
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
 
-function sendWhatsAppMessage(event) {
-    event.preventDefault(); // Prevent default form submission
+    function sendWhatsAppMessage(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const mobile = document.getElementById("mobile").value;
+      const message = document.getElementById("message").value;
 
-    // Collect form data
-    const name = document.getElementById("name").value;
-    const mobile = document.getElementById("mobile").value;
-    const message = document.getElementById("message").value;
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("phone", mobile);
+      formData.append("message", message);
 
-    // Prepare data for Formspree submission
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("phone", mobile);
-    formData.append("message", message);
-
-    // Submit data to Formspree
-    fetch("https://formspree.io/f/mjkvdoll", {
+      fetch("https://formspree.io/f/mjkvdoll", {
         method: "POST",
         body: formData,
-    })
-    .catch(error => {
+      }).catch(error => {
         console.error("Error:", error);
-    });
+      });
 
-    // Wait for 1 second before opening the WhatsApp link
-    setTimeout(() => {
-    // Create a popup element
-    const popup = document.createElement("div");
-    popup.textContent = "Thank you for connecting, Ruturaj Veer will connect with you shortly.";
-    popup.style.position = "fixed";
-    popup.style.top = "50%";
-    popup.style.left = "50%";
-    popup.style.transform = "translate(-50%, -50%)";
-    popup.style.backgroundColor = "#fff";
-    popup.style.border = "2px solid #333";
-    popup.style.padding = "20px";
-    popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-    popup.style.zIndex = "9999";
-    popup.style.fontFamily = "Arial, sans-serif";
-    popup.style.textAlign = "center";
+      setTimeout(() => {
+        const popup = document.createElement("div");
+        popup.textContent = "Thank you for connecting, Ruturaj Veer will connect with you shortly.";
+        popup.style.position = "fixed";
+        popup.style.top = "50%";
+        popup.style.left = "50%";
+        popup.style.transform = "translate(-50%, -50%)";
+        popup.style.backgroundColor = "#fff";
+        popup.style.border = "2px solid #333";
+        popup.style.padding = "20px";
+        popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        popup.style.zIndex = "9999";
+        popup.style.fontFamily = "Arial, sans-serif";
+        popup.style.textAlign = "center";
 
-    document.body.appendChild(popup);
+        document.body.appendChild(popup);
 
-    // Remove the popup after 2-3 seconds
-    setTimeout(() => {
-        document.body.removeChild(popup);
-
-        // Open WhatsApp link
-        const whatsappUrl = `https://ruturajveer143.github.io/profile/`;
-        window.open(whatsappUrl, "");
-    }, 2500); // Adjust delay as needed (2.5 seconds here)
-}, 1000); // Initial delay before showing popup
-
-}
-
-
-
-    </script>
+        setTimeout(() => {
+          document.body.removeChild(popup);
+          const whatsappUrl = `https://ruturajveer143.github.io/profile/`;
+          window.open(whatsappUrl, "");
+        }, 2500);
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
