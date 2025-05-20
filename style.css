@@ -1,218 +1,220 @@
 /* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #858585;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+font-family: 'Roboto', sans-serif;
+margin: 0;
+padding: 0;
+background: #858585;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
 }
 
-/* LinkedIn Style Card */
+/* LinkedIn Style Card \*/
+
+  
 .linkedin-card {
-    position: relative;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    max-width: 800px;
-    width: 100%;
-    overflow: hidden;
+position: relative;
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+max-width: 800px;
+width: 100%;
+overflow: hidden;
 }
 
-/* Cover Section */
+/* Cover Section \*/
 .cover-section {
-    width: 100%;
-    height: 200px;
-    position: relative;
+width: 100%;
+height: 200px;
+position: relative;
 }
 
 .cover-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+width: 100%;
+height: 100%;
+object-fit: cover;
 }
 
-/* Profile Section */
-.profile-section {
-    position: absolute;
-    top: 130px;
-    left: 20px;
-    z-index: 2;
-}
+/* Profile Section \*/
+ .profile-section {
+position: absolute;
+top: 150px;
+left: 20px;
+z-index: 2;
+} 
+
 
 .profile-img {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    border: 4px solid white;
+border-radius: 50%;
+width: 120px;
+height: 120px;
+border: 4px solid white;
 }
 
 /* Info Section */
 .info-section {
-    padding: 10px 30px 20px;
-    margin-left: 150px; /* Align content to the right of the profile pic */
+padding: 10px 30px 20px;
+margin-left: 150px; /* Align content to the right of the profile pic */
 }
 
 /* Name and Location */
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 
 .info-section h1 {
-    font-size: 40px;
-    color: #000;
-    margin: 0;
+font-size: 40px;
+color: #000;
+margin: 0;
 }
-
 
 /* Title */
 .info-section .title {
-    font-size: 15px;
-    color: #666;
-    margin: 5px 0 15px;
+font-size: 15px;
+color: #666;
+margin: 5px 0 15px;
 }
 
 /* Social Links */
 .social-links {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap; /* Ensures buttons wrap correctly on small screens */
-    align-items: center; /* Align buttons vertically in a row */
+display: flex;
+gap: 8px;
+flex-wrap: wrap; /* Ensures buttons wrap correctly on small screens */
+align-items: center; /* Align buttons vertically in a row \*/
 }
 
 .social-btn {
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: white;
-    display: flex;
-    align-items: center; /* Align icon and text within button */
-    gap: 8px;
-    transition: background 0.3s ease-in-out;
-    white-space: nowrap; /* Prevents text breaking into the next line */
+text-decoration: none;
+padding: 10px 15px;
+border-radius: 25px;
+font-size: 0.9rem;
+font-weight: 500;
+color: white;
+display: flex;
+align-items: center; /* Align icon and text within button */
+gap: 8px;
+transition: background 0.3s ease-in-out;
+white-space: nowrap; /* Prevents text breaking into the next line \*/
 }
 
-
 .social-btn i {
-    font-size: 1rem;
+font-size: 1rem;
 }
 
 .linkedin {
-    background-color: #0077b5;
+background-color: #0077b5;
 }
 
 .github {
-    background-color: #333;
+background-color: #333;
 }
 
 .email {
-    background-color: #ea4335;
+background-color: #ea4335;
 }
 
 .whatsapp {
-    background-color: #25D366;
+background-color: #25D366;
 }
 .instagram {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
 }
 
 .portfolio {
-    background-color: #ffa500; /* Orange for portfolio */
+background-color: #ffa500;  
 }
 
 .social-btn:hover {
-    filter: brightness(0.9);
-    color: #333333;
+filter: brightness(0.9);
+color: #333333;
 }
 
-/* Footer */
+.github:hover {
+    filter: brightness(0.9);
+    color: #ff2a2a;
+    }
+
+ /* Footer */
 footer {
-    background-color: #a3a3a3;
-    font-size: 0.8rem;
-    color: #000;
-    padding: 10px;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
+background-color: #a3a3a3;
+font-size: 0.8rem;
+color: #000;
+padding: 10px;
+text-align: center;
+border-top: 1px solid #e0e0e0;
 }
 
 .typing-container {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            border-right: 2px solid #333;
-            white-space: nowrap;
-            overflow: hidden;
-            width: 18ch; /* Controls the width of the text */
-            animation: typing 3s steps(18, end), blink 0.5s step-end infinite;
-        }
+font-size: 24px;
+font-weight: bold;
+color: #333;
+border-right: 2px solid #333;
+white-space: nowrap;
+overflow: hidden;
+width: 18ch;  /* Controls the width of the text  */
+animation: typing 3s steps(18, end), blink 0.5s step-end infinite;
+}
 
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 18ch;
-            }
+    @keyframes typing {
+        from {
+            width: 0;
         }
+        to {
+            width: 18ch;
+        }
+    }
 
-        @keyframes blink {
-            50% {
-                border-color: transparent;
-            }
+    @keyframes blink {
+        50% {
+            border-color: transparent;
         }
+    }
 
 /* Responsive Design */
  @media (max-width: 600px) {
     .linkedin-card {
         flex-direction: column;
     }
-
     .cover-section {
-         height: auto;
+        width: 100%;
+        height: 150px;
+        position: relative;
     }
+   
+        
 
     .profile-section {
         position: relative;
+        padding-left: 30vw;
         top: -30px;
-       display: flex;
+       display:inline;
         justify-content: center;
+
     }
 
     .profile-img {
         width: 100px;
         height: 100px;
+        margin-bottom: -30px;
         
     }
 
     .info-section {
-        margin: 0;
-        padding: 5px;
-         text-align: center;
-        position: relative;
-        top: -40px;
-        left: 0;
-        display: flex; 
-    justify-content: center; 
+      position: relative;
+       text-align: center;
+        display: inline; 
     }
 
     .info-section h1 {
-        position: relative;
-        top: -0px;
-        left: 0;
-        display: flex;
-        justify-content: center;
-      
-        font-size: 1.5rem;
+        font-size: 1.9rem;
+
     }
 
     .info-section .title {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .info-section .desc {
@@ -227,130 +229,146 @@ footer {
         justify-content: center;
     }
 } 
+a{
+    color: #0077b5;
+}
+
 
 /* Scoped Styles for Popup */
 #popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Subtle dark overlay */
-    display: none; /* Hidden by default */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Above other content */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.4); /* Subtle dark overlay */
+display: none; /* Hidden by default */
+justify-content: center;
+align-items: center;
+z-index: 1000; /* Above other content \*/
 }
 
 #popup .popup-content {
-    background: #ffffff; /* Clean white background */
-    border-radius: 20px; /* Smooth rounded corners */
-    width: 80%; /* Reduced width for a compact design */
-    max-width: 350px; /* Limit the maximum size */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+background: #ffffff; /* Clean white background */
+border-radius: 10px; /* Smooth rounded corners */
+width: 90%; /* Reduced width for a compact design */
+max-width: 350px; /* Limit the maximum size */
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+display: flex;
+flex-direction: column;
+overflow: hidden;
+animation: popup-appear 0.3s ease-in-out;
+}
+
+.whatsappdp{
+    padding: 5px;
+    height: auto;
+    width: 45px;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    animation: popup-appear 0.3s ease-in-out;
+    align-items: center;
+    border-radius: 50px;
+
 }
 
 #popup .chat-header {
-    background: #128C7E; /* WhatsApp dark green */
-    color: white;
-    font-size: 1.5rem;
-    padding: 15px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
+background: #00875e; /* WhatsApp dark green */
+color: rgb(255, 255, 255);
+font-size: 1.3rem;
+padding: 3px;
+width: 100%;
+display:flex;
+align-items: center;
+justify-content:baseline;
+font-weight: bold;
+
 }
 
 #popup .chat-header .popup-close {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+background: transparent;
+border: none;
+color: rgb(255, 255, 255);
+font-size: 2rem;
+cursor: pointer;
+transition: transform 0.3s ease-in-out;
 }
 
 #popup .chat-header .popup-close:hover {
-    transform: scale(1.2);
+transform: scale(1.2);
 }
 
 #popup .chat-body {
-    background: #f5f5f5; /* Light gray background */
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    overflow-y: auto;
-    font-size: 0.9rem;
+background: rgb(235, 234, 234); /* Light gray background */
+padding: 8px 2px 1px 12px ;
+flex:1;
+display: flex;
+flex-direction: column;
+gap:10px;
+width: 100%;
+overflow-y: auto;
+font-size: 1rem;
 }
 
 #popup .chat-body .info-text {
-    text-align: center;
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 10px;
+text-align: center;
+font-size: 1rem;
+color: #333;
+margin-bottom: 10px;
 }
 
 #popup .chat-form {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+padding: 20px;
+padding-left: 10px;
+display: flex;
+flex-direction: column;
+gap: 15px;
+background-color: rgb(235, 234, 234);
 }
 
 #popup .chat-form input,
 #popup .chat-form textarea {
-    width: 95%;
-    padding: 14px; /* Slightly increased padding */
-    border: 1px solid #828282;
-    border-radius: 10px;
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.3s ease;
+width: 95%;
+padding: 14px; 
+border: 1px solid #828282;
+border-radius: 30px;
+font-size: 1rem;
+outline: none;
+transition: border 0.3s ease;
 }
 
 #popup .chat-form input:focus,
-#popup .chat-form textarea:focus {
-    border: 1px solid #128C7E;
+#popup .chat-form textarea\:focus {
+border: 1px solid #32f483;
 }
 
 #popup .chat-form button {
-    background: #25D366; /* WhatsApp green */
-    color: rgb(255, 255, 255);
-    font-size: 1.1rem; /* Slightly larger font */
-    border: none;
-    border-radius: 25px; /* Rounded button */
-    padding: 10px 15px; /* Larger button size */
-    cursor: pointer;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft button shadow */
-    transition: background 0.3s ease-in-out, transform 0.2s;
+background: #25D366; /* WhatsApp green */
+color: rgb(255, 255, 255);
+font-size: 1.1rem; /* Slightly larger font */
+border: none;
+border-radius: 25px; /* Rounded button */
+padding: 10px 15px; /* Larger button size */
+cursor: pointer;
+margin-left: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft button shadow \*/
+transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 #popup .chat-form button:hover {
-    background: #147739;
-    transform: translateY(-2px); /* Lift effect */
+background: #147739;
+transform: translateY(-2px); /* Lift effect */
 }
 
 /* Animation */
 @keyframes popup-appear {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+from {
+transform: scale(0.8);
+opacity: 0;
 }
+to {
+transform: scale(1);
+opacity: 1;
+}}
