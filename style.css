@@ -174,7 +174,7 @@ footer {
     }
 
     .cover-section {
-/*      height: 100px; */
+
          height: auto;
     }
 
@@ -193,13 +193,13 @@ footer {
 
     .info-section {
         margin: 0;
-        padding: 20px;
-        text-align: center;
+        padding: 5px;
+/*         text-align: center; */
         position: relative;
         top: -40px;
         left: 0;
         /* display: flex; */
-        justify-content: center;
+/*         justify-content: center; */
     }
 
     .info-section h1 {
