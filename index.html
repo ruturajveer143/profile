@@ -128,7 +128,7 @@
   const counterRef = db.ref("siteData/visitorCount");
   counterRef.transaction(current => {
     if (current === null || current === undefined) {
-      return 50000;
+      return "Loading...";
     }
     return current + 1;
   });
