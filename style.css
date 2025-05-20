@@ -181,10 +181,8 @@ footer {
     .profile-section {
         position: relative;
         top: -30px;
-/*         margin:0 auto; */
-         left: 20px;
-        display: flex;
-        justify-content: center;
+/*         display: flex;
+        justify-content: center; */
     }
 
     .profile-img {
