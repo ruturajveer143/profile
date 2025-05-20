@@ -170,19 +170,24 @@ footer {
 /* Responsive Design */
 @media (max-width: 600px) {
     .linkedin-card {
+        display: flex;
         flex-direction: column;
+        align-items: center;
     }
+
 
     .cover-section {
         height: 100px;
     }
 
-    .profile-section {
+      .profile-section {
         position: relative;
-        top: -30px;
-        margin:0 auto;
+        top: -40px;
+        left: 0;
+        margin: 0 auto;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
     .profile-img {
@@ -191,18 +196,18 @@ footer {
         
     }
 
-    .info-section {
+   .info-section {
         margin: 0;
-        padding: 20px;
+        padding: 10px 20px;
         text-align: center;
         position: relative;
-        top: -40px;
+        top: -30px;
         left: 0;
-        /* display: flex; */
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-
-    .info-section h1 {
+/*     .info-section h1 {
         position: relative;
         top: -0px;
         left: 0;
@@ -215,17 +220,29 @@ footer {
     .info-section .title {
         font-size: 0.9rem;
     }
-
+*/
     .info-section .desc {
         font-size: 0.8rem;
+    } 
+    .info-section h1 {
+        font-size: 1.6rem;
+        margin-top: 10px;
     }
+
+    .info-section .title {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    
 
     .header {
         flex-direction: column;
     }
 
-    .social-links {
+  .social-links {
         justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
