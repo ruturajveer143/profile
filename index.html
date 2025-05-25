@@ -1,163 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hi, I am Ruturaj Veer" />
-  <meta name="keywords" content="Ruturaj Veer,Ruturaj, Ruturaj Gaikwad, Ruturaj, Veer, ruturaj, ruturaj veer, veer, hero, actres,  portfolio, IT student, web development, projects, skills" />
+  <meta id="meta-description" name="description" content="">
+  <meta id="meta-keywords" name="keywords" content="">
   <title>Ruturaj Veer | Profile</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="image.png" rel="icon">
-  <link href="image.png" rel="apple-touch-icon">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ruturaj Veer",
-  "jobTitle": "Software Developer",
-  "url": "https://ruturajveer143.github.io/profile/",
-  "sameAs": [
-    "https://www.linkedin.com/in/ruturaj-veer-143veer/",
-    "https://github.com/ruturajveer143"
-  ],
-  "image": "https://ruturajveer143.github.io/profile/dev.gif",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Pune",
-    "addressRegion": "Maharashtra",
-    "addressCountry": "India"
-  }
-}
-</script>
-
-  <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
-<!-- Firebase Realtime Database SDK -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ruturaj Veer",
-  "jobTitle": "Software Developer",
-  "url": "https://ruturajveer143.github.io/profile/",
-  "sameAs": [
-    "https://www.linkedin.com/in/ruturaj-veer-143veer/",
-    "https://github.com/ruturajveer143"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Pune",
-    "addressRegion": "Maharashtra",
-    "addressCountry": "India"
-  }
-}
-</script>
-
+  <link id="favicon" rel="icon">
+  <link id="apple-icon" rel="apple-touch-icon">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 
 <body>
   <div class="linkedin-card">
     <div class="cover-section">
-      <img src="cover-page.jpg" alt="Cover Image" class="cover-img">
+      <img id="cover-img" alt="Cover Image" class="cover-img">
+      <div id="tsparticles" class="particles-overlay"></div>
     </div>
+
     <div class="profile-info-container">
-    <div class="profile-section">
-      <img src="dev.gif" alt="Profile Picture" class="profile-img">
-    </div>
-    <div class="info-section">
-      <div class="header">
-        <h1>Ruturaj Veer</h1>
+      <div class="profile-section">
+        <img id="profile-img" alt="Profile Picture" class="profile-img">
       </div>
-      <p class="title">Software Developer | &nbsp;<span class="">Pune, Maharashtra | </span> &nbsp;<span class=""> <a href="https://ruturajveer143.github.io/portfolio/" target="_blank">Portfolio</a></span></p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/ruturaj-veer-143veer/" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://www.instagram.com/ruturaj.143/" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="#" class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="https://github.com/ruturajveer143" class="social-btn github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="mailto:vruturaj633@gmail.com" class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
-       
+      <div class="info-section">
+        <div class="header">
+          <h1 id="name">Loading...</h1>
+        </div>
+        <p class="title" id="title">Fetching profile data...</p>
+        <div class="social-links">
+          <a href="#" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="#" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#" class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i>
+            WhatsApp</a>
+          <a href="#" class="social-btn github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="#" class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+        </div>
       </div>
     </div>
-  </div>
 
     <div class="popup" id="popup">
       <div class="popup-content whatsapp-chat">
         <div class="chat-header">
-          <i><img class="whatsappdp" src="dev.gif" alt="Profile Picture" class="profile-img"></i>
-          &nbsp;&nbsp;<span>Ruturaj Veer</span>
-          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<button class="popup-close" onclick="closePopup()">×</button>
+          <img id="whatsapp-dp" class="whatsappdp" alt="Profile Picture">
+          &nbsp;&nbsp;<span id="popup-name"></span>
+          <button class="popup-close" onclick="closePopup()">×</button>
         </div>
         <div class="chat-body">
           <div class="chat-message incoming">
-            <span>Hello! How can I help you today?</span>
+            <span id="popup-message">Hello! How can I help you today?</span>
           </div>
         </div>
-        <form class="chat-form" onsubmit="sendWhatsAppMessage(event)">
-          <input type="text" id="name" name="name" placeholder="Your Name" required>
-          <input type="tel" id="mobile" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10}">
-          <textarea id="message" name="message" placeholder="Your Message" rows="2" required></textarea>
+        <form class="chat-form" id="contact-form">
+          <input type="text" id="user-name" name="name" placeholder="Your Name" required>
+          <input type="tel" id="user-mobile" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10}">
+          <textarea id="user-message" name="message" placeholder="Your Message" rows="2" required></textarea>
           <button type="submit"><i class="fab fa-whatsapp"></i> Send</button>
         </form>
       </div>
     </div>
 
     <footer>
-      &copy; 2025 | Ruturaj Veer |
+      &copy; 2025 | <span id="footer-name">Loading...</span> |
       <span id="visitCount">Loading visits...</span>
     </footer>
   </div>
 
- <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDVXI5VvxM3bhRV9ChMBANtH0EtjGkBZMI",
-    authDomain: "ruturaj-veer.firebaseapp.com",
-    databaseURL: "https://ruturaj-veer-default-rtdb.firebaseio.com",
-    projectId: "ruturaj-veer",
-    storageBucket: "ruturaj-veer.appspot.com",
-    messagingSenderId: "168086635691",
-    appId: "1:168086635691:web:eedec947d385a3b53ae3ee"
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDVXI5VvxM3bhRV9ChMBANtH0EtjGkBZMI",
+      authDomain: "ruturaj-veer.firebaseapp.com",
+      databaseURL: "https://ruturaj-veer-default-rtdb.firebaseio.com",
+      projectId: "ruturaj-veer",
+      storageBucket: "ruturaj-veer.appspot.com",
+      messagingSenderId: "168086635691",
+      appId: "1:168086635691:web:eedec947d385a3b53ae3ee"
+    };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-  const siteDataRef = db.ref("siteData");
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-  // Update & Display Visit Counter
-  const counterRef = db.ref("siteData/visitorCount");
-  counterRef.transaction(current => {
-    if (current === null || current === undefined) {
-      return "Loading...";
-    }
-    return current + 1;
-  });
+    const counterRef = db.ref("siteData/visitorCount");
+    counterRef.transaction(current => (current || 0) + 1);
+    counterRef.on("value", snapshot => {
+      const count = snapshot.val();
+      document.getElementById("visitCount").textContent = `[Total Visits: ${count}]`;
+    });
 
-  counterRef.on("value", snapshot => {
-    const count = snapshot.val();
-    document.getElementById("visitCount").textContent = `[Total Visits: ${count} ]`;
-  });
+    const profileRef = db.ref("siteData/profile");
+    profileRef.on("value", snapshot => {
+      const data = snapshot.val();
+      if (!data) return;
 
-  // Load Profile Info
-  const profileRef = db.ref("siteData/profile");
-  profileRef.on("value", snapshot => {
-    const data = snapshot.val();
-    if (data) {
-      document.querySelector(".header h1").textContent = data.name;
-      document.querySelector(".title").innerHTML = `${data.title} | ${data.location} | <a href="${data.portfolio}" target="_blank">Portfolio</a>`;
+      document.title = `${data.name} | Profile`;
+      document.getElementById("name").textContent = data.name;
+      document.getElementById("popup-name").textContent = data.name;
+      document.getElementById("footer-name").textContent = data.name;
+      document.getElementById("title").innerHTML = `${data.title} | ${data.location} | <a href="${data.portfolio}" target="_blank">Portfolio</a>`;
+
       document.querySelector(".linkedin").href = data.linkedin;
       document.querySelector(".instagram").href = data.instagram;
       document.querySelector(".github").href = data.github;
       document.querySelector(".email").href = `mailto:${data.email}`;
-    }
-  });
-</script>
+      document.getElementById("popup-message").textContent = data.popupMessage || "Hello! How can I help you today?";
+
+      document.querySelector('meta[name="description"]').setAttribute("content", data.metaDescription || "");
+      document.querySelector('meta[name="keywords"]').setAttribute("content", data.metaKeywords || "");
 
 
-  <!-- WhatsApp Popup Logic -->
-  <script>
+      document.getElementById("favicon").href = "image.png";
+      document.getElementById("apple-icon").href = "image.png";
+      document.getElementById("profile-img").src = "dev.gif";
+      document.getElementById("cover-img").src = "cover-page.jpg";
+      document.getElementById("whatsapp-dp").src = "dev.gif";
+
+
+      const form = document.getElementById("contact-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("user-name").value;
+        const mobile = document.getElementById("user-mobile").value;
+        const message = document.getElementById("user-message").value;
+
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("phone", mobile);
+        formData.append("message", message);
+
+        fetch(data.formspreeEndpoint, {
+          method: "POST",
+          body: formData
+        }).catch(console.error);
+
+        setTimeout(() => {
+          const popup = document.createElement("div");
+          popup.textContent = data.thankYouMessage || "Thanks for contacting me!";
+          Object.assign(popup.style, {
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "#fff",
+            border: "2px solid #333",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            zIndex: "9999",
+            fontFamily: "Arial, sans-serif",
+            textAlign: "center"
+          });
+          document.body.appendChild(popup);
+          setTimeout(() => {
+            document.body.removeChild(popup);
+            window.open(data.redirectURL || "https://ruturajveer143.github.io/profile/", "");
+          }, 2500);
+        }, 1000);
+      });
+    });
+
     function showPopup(event) {
       event.preventDefault();
       document.getElementById("popup").style.display = "flex";
@@ -167,49 +171,62 @@
       document.getElementById("popup").style.display = "none";
     }
 
-    function sendWhatsAppMessage(event) {
-      event.preventDefault();
-      const name = document.getElementById("name").value;
-      const mobile = document.getElementById("mobile").value;
-      const message = document.getElementById("message").value;
-
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("phone", mobile);
-      formData.append("message", message);
-
-      fetch("https://formspree.io/f/mjkvdoll", {
-        method: "POST",
-        body: formData,
-      }).catch(error => {
-        console.error("Error:", error);
-      });
-      
-
-      setTimeout(() => {
-        const popup = document.createElement("div");
-        popup.textContent = "Thank you for connecting, Ruturaj Veer will connect with you shortly.";
-        popup.style.position = "fixed";
-        popup.style.top = "50%";
-        popup.style.left = "50%";
-        popup.style.transform = "translate(-50%, -50%)";
-        popup.style.backgroundColor = "#fff";
-        popup.style.border = "2px solid #333";
-        popup.style.padding = "20px";
-        popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-        popup.style.zIndex = "9999";
-        popup.style.fontFamily = "Arial, sans-serif";
-        popup.style.textAlign = "center";
-
-        document.body.appendChild(popup);
-
-        setTimeout(() => {
-          document.body.removeChild(popup);
-          const whatsappUrl = `https://ruturajveer143.github.io/profile/`;
-          window.open(whatsappUrl, "");
-        }, 2500);
-      }, 1000);
-    }
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
+      fpsLimit: 80,
+      particles: {
+        number: { value: 250, density: { enable: true, area: 800 } },
+        color: {
+          value: ["#ffffff", "#8e44ad", "#00ffff", "#ff4ecb", "#eb5600", "#f39c12", "#2ecc71", "#3498db", "#e74c3c"]
+        },
+        shape: { type: "circle" },
+        links: {
+          enable: true,
+          distance: 80,
+          color: "#eb5600",
+          opacity: 0.8,
+          width: 1
+        },
+        opacity: {
+          value: 0.7,
+          random: true,
+          anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
+        },
+        size: {
+          value: { min: 1.5, max: 5 },
+          random: true,
+          anim: { enable: true, speed: 4, size_min: 1, sync: false }
+        },
+        move: {
+          enable: true,
+          speed: 0.8,
+          direction: "top",
+          random: true,
+          straight: false,
+          outModes: { default: "out" },
+          trail: { enable: true, length: 3, fillColor: "transparent" }
+        },
+        rotate: {
+          value: 0,
+          random: true,
+          direction: "clockwise",
+          animation: { enable: true, speed: 5 }
+        }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: ["repulse", "bubble"] },
+          onClick: { enable: true, mode: ["push", "repulse"] }
+        },
+        modes: {
+          bubble: { distance: 100, size: 3, duration: 2, opacity: 1, color: "#ffffff" },
+          repulse: { distance: 100, duration: 0.4 },
+          push: { quantity: 4 }
+        }
+      }
+    });
   </script>
 </body>
+
 </html>
