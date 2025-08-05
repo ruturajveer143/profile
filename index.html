@@ -5,13 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta id="meta-description" name="description" content="">
-  <meta id="meta-keywords" name="keywords" content="">
-  <title>Ruturaj Veer | Profile</title>
+  <meta id="meta-description" name="description" content="Ruturaj Veer - QA Automation Engineer skilled in Java, Selenium, REST Assured, and modern testing tools.">
+  <meta id="meta-keywords" name="keywords" content="Ruturaj Veer, QA Engineer, Selenium, Java, REST Assured, Automation Tester, SDET, Git, Jenkins, Playwright, HTML, CSS, Portfolio">
+  <title>Ruturaj Veer | QA Automation Engineer</title>
+
   <link rel="stylesheet" href="style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link id="favicon" rel="icon">
   <link id="apple-icon" rel="apple-touch-icon">
+
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
@@ -30,16 +32,20 @@
       </div>
       <div class="info-section">
         <div class="header">
-          <h1 id="name">Loading...</h1>
+          <h1 id="name" style="font-weight: bold; color: #2c3e50;">Loading...</h1>
         </div>
-        <p class="title" id="title">Fetching profile data...</p>
+        <p class="title" id="title" style="font-size: 1.1em;">Fetching profile data...</p>
         <div class="social-links">
           <a href="#" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="#" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="#" class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i>
-            WhatsApp</a>
+          <a href="#" class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i> WhatsApp</a>
           <a href="#" class="social-btn github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
           <a href="#" class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <div style="margin-top: 15px;">
+          <a href="https://ruturajveer143.github.io/portfolio/" class="social-btn" style="background-color: #0077b5; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; display: inline-block;" target="_blank">
+            <i class="fas fa-briefcase"></i> View Full Portfolio
+          </a>
         </div>
       </div>
     </div>
@@ -66,8 +72,7 @@
     </div>
 
     <footer>
-      &copy; 2025 | <span id="footer-name">Loading...</span> |
-      <span id="visitCount">Loading visits...</span>
+      &copy; 2025 | <span id="footer-name">Loading...</span> | <span id="visitCount">Loading visits...</span>
     </footer>
   </div>
 
@@ -97,7 +102,7 @@
       const data = snapshot.val();
       if (!data) return;
 
-      document.title = `${data.name} | Profile`;
+      document.title = `${data.name} | QA Automation Engineer`;
       document.getElementById("name").textContent = data.name;
       document.getElementById("popup-name").textContent = data.name;
       document.getElementById("footer-name").textContent = data.name;
@@ -112,13 +117,11 @@
       document.querySelector('meta[name="description"]').setAttribute("content", data.metaDescription || "");
       document.querySelector('meta[name="keywords"]').setAttribute("content", data.metaKeywords || "");
 
-
       document.getElementById("favicon").href = "image.png";
       document.getElementById("apple-icon").href = "image.png";
       document.getElementById("profile-img").src = "dev.gif";
       document.getElementById("cover-img").src = "cover-page.jpg";
       document.getElementById("whatsapp-dp").src = "dev.gif";
-
 
       const form = document.getElementById("contact-form");
       form.addEventListener("submit", function (e) {
@@ -228,5 +231,4 @@
     });
   </script>
 </body>
-
 </html>
