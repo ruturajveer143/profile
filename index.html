@@ -2,22 +2,18 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta id="meta-description" name="description" content="">
-  <meta id="meta-keywords" name="keywords" content="">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="meta-description" name="description" content="Ruturaj Veer - QA Automation Engineer skilled in Java, Selenium, REST Assured, and modern testing tools.">
+  <meta id="meta-keywords" name="keywords" content="Ruturaj Veer, QA Engineer, Selenium, Java, REST Assured, Automation Tester, SDET, Git, Jenkins, Playwright, HTML, CSS, Portfolio">
   <title>Ruturaj Veer | Profile</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link id="favicon" rel="icon">
   <link id="apple-icon" rel="apple-touch-icon">
-
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
-  <!-- Particle Effects -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 
@@ -38,11 +34,12 @@
         </div>
         <p class="title" id="title">Fetching profile data...</p>
         <div class="social-links">
-          <a class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-          <a class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-          <a class="social-btn portfolio" target="_blank"><i class="fas fa-briefcase"></i> Portfolio</a>
-          <a class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+          <a href="#" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="#" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#" class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i>
+            WhatsApp</a>
+          <a href="#" class="social-btn portfolio" target="_blank"> <i class="fas fa-briefcase"></i> Portfolio</a>
+          <a href="#" class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
         </div>
       </div>
     </div>
@@ -88,7 +85,6 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Visitor Counter
     const counterRef = db.ref("siteData/visitorCount");
     counterRef.transaction(current => (current || 0) + 1);
     counterRef.on("value", snapshot => {
@@ -96,70 +92,71 @@
       document.getElementById("visitCount").textContent = `[Total Visits: ${count}]`;
     });
 
-    // Fetch all site data
-    const siteRef = db.ref("siteData");
-    siteRef.once("value").then(snapshot => {
+    const profileRef = db.ref("siteData/profile");
+    profileRef.on("value", snapshot => {
       const data = snapshot.val();
-      const { profile, meta, links } = data;
+      if (!data) return;
 
-      // Update Head
-      document.title = `${profile.name} | Profile`;
-      document.querySelector('meta[name="description"]').setAttribute("content", meta.description);
-      document.querySelector('meta[name="keywords"]').setAttribute("content", meta.keywords);
+      document.title = `${data.name} | Profile`;
+      document.getElementById("name").textContent = data.name;
+      document.getElementById("popup-name").textContent = data.name;
+      document.getElementById("footer-name").textContent = data.name;
+      document.getElementById("title").innerHTML = `${data.title} | ${data.location}`;
 
-      // Set Basic Info
-      document.getElementById("name").textContent = profile.name;
-      document.getElementById("title").textContent = `${profile.title} | ${profile.location}`;
-      document.getElementById("footer-name").textContent = profile.name;
-      document.getElementById("popup-name").textContent = profile.name;
-      document.getElementById("popup-message").textContent = meta.popupMessage;
+      document.querySelector(".linkedin").href = data.linkedin;
+      document.querySelector(".instagram").href = data.instagram;
+      document.querySelector(".portfolio").href = data.portfolio;
+      document.querySelector(".email").href = `mailto:${data.email}`;
+      document.getElementById("popup-message").textContent = data.popupMessage || "Hello! How can I help you today?";
 
-      // Update Social Links
-      const socials = links.social;
-      document.querySelector(".linkedin").href = socials.linkedin;
-      document.querySelector(".instagram").href = socials.instagram;
-      document.querySelector(".portfolio").href = links.portfolio;
-      document.querySelector(".email").href = `mailto:${links.email}`;
+      document.querySelector('meta[name="description"]').setAttribute("content", data.metaDescription || "");
+      document.querySelector('meta[name="keywords"]').setAttribute("content", data.metaKeywords || "");
 
-      // Static Assets (can be dynamic if added to Firebase too)
-      document.getElementById("profile-img").src = "dev.gif";
-      document.getElementById("whatsapp-dp").src = "dev.gif";
-      document.getElementById("cover-img").src = "cover-page.jpg";
+
       document.getElementById("favicon").href = "image.png";
       document.getElementById("apple-icon").href = "image.png";
+      document.getElementById("profile-img").src = "dev.gif";
+      document.getElementById("cover-img").src = "cover-page.jpg";
+      document.getElementById("whatsapp-dp").src = "dev.gif";
 
-      // Form Submission
-      document.getElementById("contact-form").addEventListener("submit", e => {
+
+      const form = document.getElementById("contact-form");
+      form.addEventListener("submit", function (e) {
         e.preventDefault();
-
         const name = document.getElementById("user-name").value;
-        const phone = document.getElementById("user-mobile").value;
+        const mobile = document.getElementById("user-mobile").value;
         const message = document.getElementById("user-message").value;
 
         const formData = new FormData();
         formData.append("name", name);
-        formData.append("phone", phone);
+        formData.append("phone", mobile);
         formData.append("message", message);
 
-        fetch(links.formspreeEndpoint || "", {
+        fetch(data.formspreeEndpoint, {
           method: "POST",
           body: formData
         }).catch(console.error);
 
         setTimeout(() => {
           const popup = document.createElement("div");
-          popup.textContent = meta.thankYouMessage;
+          popup.textContent = data.thankYouMessage || "Thanks for contacting me!";
           Object.assign(popup.style, {
-            position: "fixed", top: "50%", left: "50%",
+            position: "fixed",
+            top: "50%",
+            left: "50%",
             transform: "translate(-50%, -50%)",
-            backgroundColor: "#fff", padding: "20px",
-            border: "2px solid #333", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            zIndex: "9999", fontFamily: "Arial, sans-serif", textAlign: "center"
+            backgroundColor: "#fff",
+            border: "2px solid #333",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            zIndex: "9999",
+            fontFamily: "Arial, sans-serif",
+            textAlign: "center"
           });
           document.body.appendChild(popup);
           setTimeout(() => {
             document.body.removeChild(popup);
-            window.open(links.redirectURL, "_blank");
+            window.open(data.redirectURL || "https://ruturajveer143.github.io/profile/", "");
           }, 2500);
         }, 1000);
       });
@@ -185,22 +182,35 @@
         },
         shape: { type: "circle" },
         links: {
-          enable: true, distance: 80, color: "#eb5600", opacity: 0.8, width: 1
+          enable: true,
+          distance: 80,
+          color: "#eb5600",
+          opacity: 0.8,
+          width: 1
         },
         opacity: {
-          value: 0.7, random: true, anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
+          value: 0.7,
+          random: true,
+          anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
         },
         size: {
-          value: { min: 1.5, max: 5 }, random: true,
+          value: { min: 1.5, max: 5 },
+          random: true,
           anim: { enable: true, speed: 4, size_min: 1, sync: false }
         },
         move: {
-          enable: true, speed: 0.8, direction: "top", random: true,
-          straight: false, outModes: { default: "out" },
+          enable: true,
+          speed: 0.8,
+          direction: "top",
+          random: true,
+          straight: false,
+          outModes: { default: "out" },
           trail: { enable: true, length: 3, fillColor: "transparent" }
         },
         rotate: {
-          value: 0, random: true, direction: "clockwise",
+          value: 0,
+          random: true,
+          direction: "clockwise",
           animation: { enable: true, speed: 5 }
         }
       },
@@ -218,4 +228,6 @@
     });
   </script>
 </body>
+
+
 </html>
