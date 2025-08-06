@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,12 +11,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link id="favicon" rel="icon">
   <link id="apple-icon" rel="apple-touch-icon">
-
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
-  <!-- Particle Effects -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 
@@ -88,7 +83,6 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Visitor Counter
     const counterRef = db.ref("siteData/visitorCount");
     counterRef.transaction(current => (current || 0) + 1);
     counterRef.on("value", snapshot => {
@@ -96,91 +90,96 @@
       document.getElementById("visitCount").textContent = `[Total Visits: ${count}]`;
     });
 
-    // Fetch all site data
     const siteRef = db.ref("siteData");
     siteRef.once("value").then(snapshot => {
       const data = snapshot.val();
-      const { profile, meta, links } = data;
+      const profile = data.profile || {};
+      const meta = {
+        description: profile.metaDescription || "",
+        keywords: profile.metaKeywords || "",
+        popupMessage: profile.popupMessage || "Hello! How can I help you today?",
+        thankYouMessage: profile.thankYouMessage || "Thanks for contacting me!"
+      };
+      const links = {
+        social: profile.social || {},
+        portfolio: profile.portfolio || "#",
+        email: profile.email || "",
+        formspreeEndpoint: profile.formspreeEndpoint || "",
+        redirectURL: profile.redirectURL || "#"
+      };
 
-      // Update Head
       document.title = `${profile.name} | Profile`;
       document.querySelector('meta[name="description"]').setAttribute("content", meta.description);
       document.querySelector('meta[name="keywords"]').setAttribute("content", meta.keywords);
 
-      // Set Basic Info
       document.getElementById("name").textContent = profile.name;
       document.getElementById("title").textContent = `${profile.title} | ${profile.location}`;
       document.getElementById("footer-name").textContent = profile.name;
       document.getElementById("popup-name").textContent = profile.name;
       document.getElementById("popup-message").textContent = meta.popupMessage;
 
-      // Update Social Links
-      const socials = links.social;
-      document.querySelector(".linkedin").href = socials.linkedin;
-      document.querySelector(".instagram").href = socials.instagram;
+      document.querySelector(".linkedin").href = links.social.linkedin || "#";
+      document.querySelector(".instagram").href = links.social.instagram || "#";
       document.querySelector(".portfolio").href = links.portfolio;
       document.querySelector(".email").href = `mailto:${links.email}`;
 
-      // Static Assets (can be dynamic if added to Firebase too)
       document.getElementById("profile-img").src = "dev.gif";
       document.getElementById("whatsapp-dp").src = "dev.gif";
       document.getElementById("cover-img").src = "cover-page.jpg";
       document.getElementById("favicon").href = "image.png";
       document.getElementById("apple-icon").href = "image.png";
 
-      // Form Submission
-     document.getElementById("contact-form").addEventListener("submit", e => {
-  e.preventDefault(); 
+      document.getElementById("contact-form").addEventListener("submit", e => {
+        e.preventDefault();
 
-  const name = document.getElementById("user-name").value;
-  const phone = document.getElementById("user-mobile").value;
-  const message = document.getElementById("user-message").value;
+        const name = document.getElementById("user-name").value;
+        const phone = document.getElementById("user-mobile").value;
+        const message = document.getElementById("user-message").value;
 
-      const formData = new FormData();
-  formData.append("name", name);
-  formData.append("phone", phone);
-  formData.append("message", message);
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("phone", phone);
+        formData.append("message", message);
 
-  const endpoint = links.formspreeEndpoint || "";
+        const endpoint = links.formspreeEndpoint;
 
-  if (!endpoint) {
-    alert("Form submission endpoint is missing!");
-    return;
-  }
-       fetch(endpoint, {
-    method: "POST",
-    body: formData,
-    headers: {
-      Accept: "application/json"
-    }
-  })
+        if (!endpoint) {
+          alert("Form submission endpoint is missing!");
+          return;
+        }
 
-       .then(response => {
-      if (response.ok) 
-        const popup = document.createElement("div");
-        popup.textContent = meta.thankYouMessage || "Thanks for contacting me!";
-        Object.assign(popup.style, {
-          position: "fixed", top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          backgroundColor: "#fff", padding: "20px",
-          border: "2px solid #333", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          zIndex: "9999", fontFamily: "Arial, sans-serif", textAlign: "center"
+        fetch(endpoint, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        })
+        .then(response => {
+          if (response.ok) {
+            const popup = document.createElement("div");
+            popup.textContent = meta.thankYouMessage;
+            Object.assign(popup.style, {
+              position: "fixed", top: "50%", left: "50%",
+              transform: "translate(-50%, -50%)",
+              backgroundColor: "#fff", padding: "20px",
+              border: "2px solid #333", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              zIndex: "9999", fontFamily: "Arial, sans-serif", textAlign: "center"
+            });
+            document.body.appendChild(popup);
+            setTimeout(() => {
+              document.body.removeChild(popup);
+              window.location.reload();
+            }, 2500);
+          } else {
+            alert("Failed to submit. Please try again.");
+          }
+        })
+        .catch(error => {
+          console.error("Form submission error:", error);
+          alert("Error occurred. Please try again later.");
         });
-        document.body.appendChild(popup);
-
-        setTimeout(() => {
-          document.body.removeChild(popup);
-          window.location.reload(); // 🔁 Refresh the page
-        }, 2500);
-      } else {
-        alert("Failed to submit. Please try again.");
-      }
-    })
-    .catch(error => {
-      console.error("Form submission error:", error);
-      alert("Error occurred. Please check your internet or try again later.");
+      });
     });
-});
+
     function showPopup(event) {
       event.preventDefault();
       document.getElementById("popup").style.display = "flex";
@@ -200,9 +199,7 @@
           value: ["#ffffff", "#8e44ad", "#00ffff", "#ff4ecb", "#eb5600", "#f39c12", "#2ecc71", "#3498db", "#e74c3c"]
         },
         shape: { type: "circle" },
-        links: {
-          enable: true, distance: 80, color: "#eb5600", opacity: 0.8, width: 1
-        },
+        links: { enable: true, distance: 80, color: "#eb5600", opacity: 0.8, width: 1 },
         opacity: {
           value: 0.7, random: true, anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
         },
@@ -235,4 +232,3 @@
   </script>
 </body>
 </html>
-
