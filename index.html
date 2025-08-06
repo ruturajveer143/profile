@@ -129,42 +129,58 @@
       document.getElementById("apple-icon").href = "image.png";
 
       // Form Submission
-      document.getElementById("contact-form").addEventListener("submit", e => {
-        e.preventDefault();
+     document.getElementById("contact-form").addEventListener("submit", e => {
+  e.preventDefault(); 
 
-        const name = document.getElementById("user-name").value;
-        const phone = document.getElementById("user-mobile").value;
-        const message = document.getElementById("user-message").value;
+  const name = document.getElementById("user-name").value;
+  const phone = document.getElementById("user-mobile").value;
+  const message = document.getElementById("user-message").value;
 
-        const formData = new FormData();
-        formData.append("name", name);
-        formData.append("phone", phone);
-        formData.append("message", message);
+      const formData = new FormData();
+  formData.append("name", name);
+  formData.append("phone", phone);
+  formData.append("message", message);
 
-        fetch(links.formspreeEndpoint || "", {
-          method: "POST",
-          body: formData
-        }).catch(console.error);
+  const endpoint = links.formspreeEndpoint || "";
+
+  if (!endpoint) {
+    alert("Form submission endpoint is missing!");
+    return;
+  }
+       fetch(endpoint, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json"
+    }
+  })
+
+       .then(response => {
+      if (response.ok) 
+        const popup = document.createElement("div");
+        popup.textContent = meta.thankYouMessage || "Thanks for contacting me!";
+        Object.assign(popup.style, {
+          position: "fixed", top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "#fff", padding: "20px",
+          border: "2px solid #333", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          zIndex: "9999", fontFamily: "Arial, sans-serif", textAlign: "center"
+        });
+        document.body.appendChild(popup);
 
         setTimeout(() => {
-          const popup = document.createElement("div");
-          popup.textContent = meta.thankYouMessage;
-          Object.assign(popup.style, {
-            position: "fixed", top: "50%", left: "50%",
-            transform: "translate(-50%, -50%)",
-            backgroundColor: "#fff", padding: "20px",
-            border: "2px solid #333", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            zIndex: "9999", fontFamily: "Arial, sans-serif", textAlign: "center"
-          });
-          document.body.appendChild(popup);
-          setTimeout(() => {
-            document.body.removeChild(popup);
-            window.open(links.redirectURL, "_blank");
-          }, 2500);
-        }, 1000);
-      });
+          document.body.removeChild(popup);
+          window.location.reload(); // 🔁 Refresh the page
+        }, 2500);
+      } else {
+        alert("Failed to submit. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error("Form submission error:", error);
+      alert("Error occurred. Please check your internet or try again later.");
     });
-
+});
     function showPopup(event) {
       event.preventDefault();
       document.getElementById("popup").style.display = "flex";
@@ -219,3 +235,4 @@
   </script>
 </body>
 </html>
+
