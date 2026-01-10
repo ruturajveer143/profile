@@ -69,8 +69,17 @@ body {
   z-index:-1;
 }
 
-.cursor {
-  animation: blink 1s infinite;
+
+#cursor {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  color: #00ff99;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  text-shadow: 0 0 8px rgba(0,255,150,.8);
+  animation: blink 1s steps(1) infinite;
+  z-index: 2;
 }
 
 @keyframes blink {

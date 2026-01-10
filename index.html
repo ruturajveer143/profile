@@ -30,8 +30,9 @@
 <div id="crt">
   <pre id="topbar"></pre>
   <pre id="tl"></pre>
-  <pre id="tr"></pre>
+  <div id="cursor">_</div>
   <pre id="bg"></pre>
+  
 </div>
 
 
@@ -101,12 +102,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // const counterRef = db.ref("siteData/visitorCount");
-    // counterRef.transaction(current => (current || 0) + 1);
-    // counterRef.on("value", snapshot => {
-    //   const count = snapshot.val();
-    //   document.getElementById("visitCount").textContent = `[Total Visits: ${count}]`;
-    // });
+   
 const counterRef = db.ref("siteData/visitorCount");
 
 // Only count if this browser has never visited before
@@ -254,10 +250,9 @@ counterRef.on("value", snapshot => {
     });
 
   const topbar =
-"---------------------------------------------------------------------------\n"+
 "VEER DESKTOP INTERFACE SYSTEM\n"+
 "© 2024 RUTURAJ VEER\n"+
-"---------------------------------------------------------------------------";
+"------------------------------------------------------------------------------------------------------------------------------------------------------";
 
 document.getElementById("topbar").textContent = topbar;
 
@@ -275,7 +270,7 @@ const trLines = [
 "GPS: 18.5204° N, 73.8567° E",
 "SYS: 979187396",
 "",
-"WIFI: CONNECTED",
+"WIFI: -",
 "NETWORK: CONNECTED",
 "UPLINK: ACTIVE",
 "FIREWALL: ENABLED",
@@ -284,9 +279,7 @@ const trLines = [
 "",
 "SECURE ENVIRONMENT",
 "",
-"<span style='color:red'>THEFT DETECTED</span>",
-"",
-"<span class='cursor'>_</span>"
+"<span style='color:red'>THEFT DETECTED</span>"
 ];
 
 function type(lines, el, speed=200){
