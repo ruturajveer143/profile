@@ -3,7 +3,7 @@ body {
 font-family: 'Roboto', sans-serif;
 margin: 0;
 padding: 0;
- background: url("Image Jan 10, 2023, 02_07_23 PM.png") no-repeat center center fixed;
+ background: url("Image Jan 10, 2023, 02_07_23 PM.png");
 
 display: flex;
 justify-content: center;
@@ -396,6 +396,7 @@ transform: scale(1);
 opacity: 1;
 
 }}
+
 
 
 
