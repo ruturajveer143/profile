@@ -53,14 +53,7 @@ body {
   white-space:pre-wrap;
 }
 
-#bg {
-  position:absolute;
-  inset:0;
-  opacity:.18;
-  overflow:hidden;
-  white-space:pre;
-  z-index:-1;
-}
+
 
 
 #cursor {
@@ -76,7 +69,7 @@ body {
 }
 
 @keyframes blink {
-  50% { opacity:0; }
+  50% { opacity:10; }
 }
 
 
