@@ -22,7 +22,7 @@ body {
   /* background: rgba(10,15,10,0.85);
   backdrop-filter: blur(4px); */
 
-  border: 2px solid #00ff99;
+  border: 2px solid #black;
   box-shadow:
     0 0 15px rgba(0,255,153,0.6),
     0 0 40px rgba(0,255,153,0.3);
@@ -397,6 +397,7 @@ transform: scale(1);
 opacity: 1;
 
 }}
+
 
 
 
