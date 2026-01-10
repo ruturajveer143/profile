@@ -1,20 +1,20 @@
 /* General Styles */
-/* body {
+body {
 font-family: 'Roboto', sans-serif;
 margin: 0;
 padding: 0;
-background: #858585;
+ background: url("Image Jan 10, 2023, 02_07_23 PM.png") no-repeat center center fixed;
 
 display: flex;
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-} */
-body {
+}
+/* body {
   background: url("Image Jan 10, 2023, 02_07_23 PM.png") no-repeat center center fixed;
   background-size: cover;
   background-color: #000; /* fallback */
-}
+} */
 
 /* LinkedIn Style Card \*/
 
@@ -396,5 +396,6 @@ transform: scale(1);
 opacity: 1;
 
 }}
+
 
 
