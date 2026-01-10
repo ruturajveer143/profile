@@ -302,22 +302,7 @@ function type(lines, el, speed=200){
 type(tlLines, document.getElementById("tl"), 400);
 type(trLines, document.getElementById("tr"), 300);
 
-const bg=document.getElementById("bg");
 
-function gen(){
-  let out="";
-  for(let i=0;i<200;i++){
-    out += Math.random().toString(16).slice(2,10)+" "+
-           Math.random().toString(2).slice(2,10)+"\n";
-  }
-  return out;
-}
-
-let pos=0;
-setInterval(()=>{
-  pos++;
-  bg.textContent = "\n".repeat(pos%20)+gen();
-}, 1000);
 
 const bg=document.getElementById("bg");
 
