@@ -11,22 +11,14 @@ min-height: 100vh;
 } */
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-
   background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-    url("Image Jan 10, 2023, 02_07_23 PM.png") center/contain no-repeat,
-    url("Image Jan 10, 2023, 02_07_23 PM.png") center/cover no-repeat fixed;
+    url("Image Jan 10, 2023, 02_07_23 PM.png") no-repeat center center fixed;
 
+  background-size: contain;
   background-color: black;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
+
 
 
 
@@ -424,6 +416,7 @@ to {
 transform: scale(1);
 opacity: 1;
 }}
+
 
 
 
