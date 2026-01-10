@@ -25,7 +25,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+ position: relative;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at center, rgba(0,255,170,0.12), rgba(0,0,0,0.95)),
     #020703;
@@ -87,9 +88,12 @@ body::after {
 } */
 
 
-/* .linkedin-card {
+.linkedin-card {
   position: relative;
-  background-color: #fff;
+  z-index: 3;
+  background: rgba(10,15,10,0.85);
+  backdrop-filter: blur(4px);
+
   border-radius: 10px;
   max-width: 800px;
   width: 100%;
@@ -97,10 +101,11 @@ body::after {
 
   border: 2px solid #00ff99;
   box-shadow:
-    0 0 10px rgba(0, 255, 153, 0.6),
-    0 0 25px rgba(0, 255, 153, 0.35),
-    0 4px 12px rgba(0, 0, 0, 0.4);
-} */
+    0 0 15px rgba(0,255,153,0.6),
+    0 0 40px rgba(0,255,153,0.3),
+    0 0 80px rgba(0,255,153,0.15);
+}
+
 
 
  .cover-section {
@@ -470,6 +475,7 @@ transform: scale(1);
 opacity: 1;
 
 }}
+
 
 
 
