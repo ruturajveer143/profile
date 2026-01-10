@@ -34,14 +34,7 @@ body {
   z-index: 1;
 }
 
-#topbar {
-  position:absolute;
-  top:10px;
-  left:0;
-  right:0;
-  text-align:center;
-  white-space:pre;
-}
+
 
 #tl {
   position:absolute;
