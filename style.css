@@ -24,7 +24,6 @@ body {
   overflow: hidden;
 }
 
-
 #crt {
   position: fixed;
   inset: 0;
@@ -35,39 +34,49 @@ body {
   z-index: 1;
 }
 
-#logo {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  opacity: .8;
+#topbar {
+  position:absolute;
+  top:10px;
+  left:0;
+  right:0;
+  text-align:center;
+  white-space:pre;
 }
 
-#tl, #tr, #br, #bg {
-  position: absolute;
-  white-space: pre-wrap;
-  font-size: 13px;
-  line-height: 1.4;
+#tl {
+  position:absolute;
+  top:70px;
+  left:30px;
+  width:40%;
+  white-space:pre-wrap;
 }
 
-#tl { top: 60px; left: 30px; width: 40%; }
-#tr { top: 60px; right: 30px; width: 25%; text-align: right; }
-#br { bottom: 30px; right: 30px; width: 30%; text-align: right; }
+#tr {
+  position:absolute;
+  top:70px;
+  right:30px;
+  width:30%;
+  text-align:right;
+  white-space:pre-wrap;
+}
+
 #bg {
-  inset: 0;
-  opacity: 0.15;
-  z-index: -1;
-  overflow: hidden;
+  position:absolute;
+  inset:0;
+  opacity:.18;
+  overflow:hidden;
+  white-space:pre;
+  z-index:-1;
+}
+
+.cursor {
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% { opacity:0; }
 }
-#br::after {
-  content:"_";
-  animation: blink 1s infinite;
-}
+
 
 
 /* LinkedIn Style Card \*/

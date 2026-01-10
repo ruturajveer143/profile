@@ -28,13 +28,12 @@
 
 <body>
 <div id="crt">
-  <div id="logo">☕</div>
-
-  <pre id="tl"></pre>   <!-- top left -->
-  <pre id="tr"></pre>   <!-- top right -->
-  <pre id="br"></pre>   <!-- bottom right -->
-  <pre id="bg"></pre>   <!-- background noise -->
+  <pre id="topbar"></pre>
+  <pre id="tl"></pre>
+  <pre id="tr"></pre>
+  <pre id="bg"></pre>
 </div>
+
 
   <div class="linkedin-card">
     <div class="cover-section">
@@ -254,56 +253,89 @@ counterRef.on("value", snapshot => {
       }
     });
 
-  const TL = [
-"> VEER DESKTOP INTERFACE SYSTEM",
-"© 2024 RUTURAJ VEER",
-"SERVER 01",
-"",
-"> User Log:",
-"1) Loading OS...",
-"2) Establishing Network...",
-"3) Core Modules Online",
-"4) Awaiting Command"
+  const topbar =
+"---------------------------------------------------------------------------\n"+
+"VEER DESKTOP INTERFACE SYSTEM\n"+
+"© 2024 RUTURAJ VEER\n"+
+"---------------------------------------------------------------------------";
+
+document.getElementById("topbar").textContent = topbar;
+
+const tlLines = [
+"> SERVER 01",
+"> USER LOG:",
+"Loading OS...",
+"Establishing Network...",
+"Core Modules Online",
+"Awaiting Command..."
 ];
 
-const TR = [
+const trLines = [
 "ID: 302146",
 "GPS: 18.5204° N, 73.8567° E",
 "SYS: 979187396",
-"NETWORK HEALTH: 98%",
+"",
 "WIFI: CONNECTED",
-"UPLINK: ACTIVE"
-];
-
-const BR = [
-"SECURE ENVIRONMENT",
+"NETWORK: CONNECTED",
+"UPLINK: ACTIVE",
+"FIREWALL: ENABLED",
 "ENCRYPTION: AES-256",
 "TUNNEL: ACTIVE",
-"FIREWALL: ENABLED",
 "",
-"_"
+"SECURE ENVIRONMENT",
+"",
+"<span style='color:red'>THEFT DETECTED</span>",
+"",
+"<span class='cursor'>_</span>"
 ];
 
-function type(lines, el, delay=80) {
+function type(lines, el, speed=200){
   let i=0;
-  const t = setInterval(()=>{
+  const t=setInterval(()=>{
     if(i<lines.length){
-      el.textContent += lines[i] + "\n";
+      el.innerHTML += lines[i]+"\n";
       i++;
     } else clearInterval(t);
-  }, delay);
+  }, speed);
 }
 
-type(TL, document.getElementById("tl"));
-type(TR, document.getElementById("tr"), 120);
-type(BR, document.getElementById("br"), 150);
-const bg = document.getElementById("bg");
+type(tlLines, document.getElementById("tl"), 400);
+type(trLines, document.getElementById("tr"), 300);
 
+const bg=document.getElementById("bg");
+
+function gen(){
+  let out="";
+  for(let i=0;i<200;i++){
+    out += Math.random().toString(16).slice(2,10)+" "+
+           Math.random().toString(2).slice(2,10)+"\n";
+  }
+  return out;
+}
+
+let pos=0;
 setInterval(()=>{
-  bg.textContent = Array(600).fill(0).map(()=>
-    Math.random().toString(16).slice(2,6)
-  ).join(" ");
-}, 200);
+  pos++;
+  bg.textContent = "\n".repeat(pos%20)+gen();
+}, 1000);
+
+const bg=document.getElementById("bg");
+
+function gen(){
+  let out="";
+  for(let i=0;i<200;i++){
+    out += Math.random().toString(16).slice(2,10)+" "+
+           Math.random().toString(2).slice(2,10)+"\n";
+  }
+  return out;
+}
+
+let pos=0;
+setInterval(()=>{
+  pos++;
+  bg.textContent = "\n".repeat(pos%20)+gen();
+}, 1000);
+
 
 
    
