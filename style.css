@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
@@ -15,41 +15,79 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-}
+} */
 
 
-/* body {
+body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  padding: 0;
-
-  background: 
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-    url("Image Jan 10, 2023, 02_07_23 PM.png") no-repeat center center fixed;
-
-  background-size: cover;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-} */
 
+  background:
+    radial-gradient(circle at center, rgba(0,255,170,0.12), rgba(0,0,0,0.95)),
+    #020703;
+}
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 
-/* LinkedIn Style Card \*/
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0.25) 3px
+    );
 
-  
-/* .linkedin-card {
-position: relative;
-background-color: #fff;
-border-radius: 10px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-max-width: 800px;
-width: 100%;
-overflow: hidden;
-} */
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(transparent, rgba(0,255,170,0.02)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+
+  animation: flicker 0.15s infinite;
+  z-index: 2;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.35; }
+  50% { opacity: 0.45; }
+  100% { opacity: 0.35; }
+}
 
 .linkedin-card {
+  position: relative;
+  z-index: 3;
+  background: rgba(10,15,10,0.85);
+  backdrop-filter: blur(4px);
+
+  border: 2px solid #00ff99;
+  box-shadow:
+    0 0 15px rgba(0,255,153,0.6),
+    0 0 40px rgba(0,255,153,0.3);
+}
+
+
+/* .linkedin-card {
   position: relative;
   background-color: #fff;
   border-radius: 10px;
@@ -62,7 +100,7 @@ overflow: hidden;
     0 0 10px rgba(0, 255, 153, 0.6),
     0 0 25px rgba(0, 255, 153, 0.35),
     0 4px 12px rgba(0, 0, 0, 0.4);
-}
+} */
 
 
  .cover-section {
@@ -432,6 +470,7 @@ transform: scale(1);
 opacity: 1;
 
 }}
+
 
 
 
