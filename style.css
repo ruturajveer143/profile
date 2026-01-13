@@ -34,8 +34,6 @@ body {
   z-index: 1;
 }
 
-
-
 #tl {
   position:absolute;
   top:70px;
@@ -53,9 +51,6 @@ body {
   white-space:pre-wrap;
 }
 
-
-
-
 #cursor {
   position: absolute;
   right: 30px;
@@ -72,9 +67,6 @@ body {
   50% { opacity:10; }
 }
 
-
-
-/* LinkedIn Style Card \*/
 
 .linkedin-card {
   position: relative;
@@ -137,7 +129,6 @@ left: 20px;
 z-index: 1;
 } 
 
-
 .profile-img {
 border-radius: 50%;
 width: 120px;
@@ -151,7 +142,7 @@ border-radius: 100px;
 /* Info Section */
 .info-section {
 padding: 10px 30px 20px;
-margin-left: 150px; /* Align content to the right of the profile pic */
+margin-left: 150px; 
 }
 
 /* Name and Location */
@@ -468,6 +459,7 @@ to {
 transform: scale(1);
 opacity: 1;
 }}
+
 
 
 
