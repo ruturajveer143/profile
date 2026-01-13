@@ -250,48 +250,149 @@ counterRef.on("value", snapshot => {
       }
     });
 
- 
-const tlLines = [
-"> SERVER 01",
-"> USER LOG:",
-"Loading OS...",
-"Establishing Network...",
-"Core Modules Online",
-"Awaiting Command..."
-];
+  </script>
 
-const trLines = [
-"ID: 302146",
-"GPS: 18.5204° N, 73.8567° E",
-"SYS: 979187396",
-"",
-"WIFI: -",
-"NETWORK: CONNECTED",
-"UPLINK: ACTIVE",
-"FIREWALL: ENABLED",
-"ENCRYPTION: AES-256",
-"TUNNEL: ACTIVE",
-"",
-"SECURE ENVIRONMENT",
-"",
-"<span style='color:red'>THEFT DETECTED</span>"
-];
-
-function type(lines, el, speed=200){
-  let i=0;
-  const t=setInterval(()=>{
-    if(i<lines.length){
-      el.innerHTML += lines[i]+"\n";
-      i++;
-    } else clearInterval(t);
-  }, speed);
-}
-
-type(tlLines, document.getElementById("tl"), 400);
-type(trLines, document.getElementById("tr"), 300);
+  <script>
+    (async function(){
 
 
 
+const ua = navigator.userAgent;
+const lang = navigator.language;
+const langs = navigator.languages.join(", ");
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+const deviceType = /Mobi|Android/i.test(ua) ? "Mobile" : "Desktop";
+const cores = navigator.hardwareConcurrency || "N/A";
+const ram = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "Unavailable";
+const orient = (screen.orientation && screen.orientation.type) || "Portrait";
+const touch = "ontouchstart" in window ? "Yes" : "No";
+const resolution = screen.width + " x " + screen.height;
+const dpi = window.devicePixelRatio;
+const maxTouch = navigator.maxTouchPoints || 0;
+const cookies = navigator.cookieEnabled ? "Enabled" : "Disabled";
+const dnt = navigator.doNotTrack == "1" ? "Enabled" : "Disabled";
+
+
+let browser = "Unknown", engine="Unknown";
+
+if(ua.includes("Chrome")){ browser="Chrome"; engine="Blink"; }
+if(ua.includes("Firefox")){ browser="Firefox"; engine="Gecko"; }
+if(ua.includes("Edg")){ browser="Edge"; engine="Blink"; }
+if(ua.includes("Safari") && !ua.includes("Chrome")){ browser="Safari"; engine="WebKit"; }
+
+const net = navigator.connection || {};
+const netType = net.effectiveType || "Unknown";
+const down = net.downlink ? net.downlink + " Mbps" : "N/A";
+const rtt = net.rtt ? net.rtt + " ms" : "N/A";
+const online = navigator.onLine ? "Online" : "Offline";
+
+
+let country="India", city="Unknown", ip="Hidden";
+
+try{
+  let data = {};
+try {
+  const res = await fetch("https://ipapi.co/json/", { mode: "cors" });
+  data = await res.json();
+} catch(e){}
+
+  country = data.country_name || "India";
+  city = data.city || "Unknown";
+  ip = data.ip || "Hidden";
+}catch(e){}
+
+
+
+const features = {
+  WebGL: !!window.WebGLRenderingContext,
+  WebRTC: !!window.RTCPeerConnection,
+  WebSocket: "WebSocket" in window,
+  Camera: !!navigator.mediaDevices,
+  Microphone: !!navigator.mediaDevices,
+  Clipboard: !!navigator.clipboard,
+ Bluetooth: "bluetooth" in navigator,
+  Payments: !!window.PaymentRequest,
+  PWA: "serviceWorker" in navigator,
+  WebAuthn: !!window.PublicKeyCredential
+};
+
+
+
+let clicks=0, keys=0, scrolls=0, moves=0;
+document.onclick = ()=>clicks++;
+document.onkeydown = ()=>keys++;
+document.onscroll = ()=>scrolls++;
+document.onmousemove = ()=>moves++;
+
+const start = Date.now();
+
+
+setInterval(()=>{
+
+const timeOnPage = Math.floor((Date.now()-start)/1000)+"s";
+
+document.getElementById("tl").innerHTML = `
+<BROWSER & LOCATION>
+
+Browser: ${browser}
+Engine: ${engine}
+Cookies: ${cookies}
+Do Not Track: ${dnt}
+
+Language: ${lang}
+Languages: ${langs}
+Timezone: ${tz}
+
+Country: ${country}
+City: ${city}
+IP: ${ip}
+
+Local Time: ${new Date().toLocaleTimeString()}
+`;
+
+document.getElementById("tr").innerHTML = `
+<DEVICE & NETWORK>
+
+Device: ${deviceType}
+CPU Cores: ${cores}
+RAM: ${ram}
+Touch: ${touch}
+Resolution: ${resolution}
+Pixel Ratio: ${dpi}
+Orientation: ${orient}
+Max Touch: ${maxTouch}
+
+Network: ${netType}
+Speed: ${down}
+Latency: ${rtt}
+Status: ${online}
+
+<FEATURES>
+
+WebGL: ${features.WebGL}
+WebRTC: ${features.WebRTC}
+WebSocket: ${features.WebSocket}
+Camera: ${features.Camera}
+Mic: ${features.Microphone}
+Clipboard: ${features.Clipboard}
+Bluetooth: ${features.Bluetooth}
+Payments: ${features.Payments}
+PWA: ${features.PWA}
+WebAuthn: ${features.WebAuthn}
+
+<USER ACTIVITY>
+
+Clicks: ${clicks}
+Keys: ${keys}
+Scrolls: ${scrolls}
+Mouse Moves: ${moves}
+Time On Page: ${timeOnPage}
+`;
+
+},1000);
+
+})();
 
   </script>
 </body>
