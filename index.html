@@ -14,33 +14,68 @@
   <link id="apple-icon" rel="apple-touch-icon">
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PV6DPGJ9G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-3PV6DPGJ9G');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PV6DPGJ9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3PV6DPGJ9G');
+  </script>
 </head>
 
 <body>
-<div id="crt">
 
-  <pre id="tl"></pre>
-   <pre id="tr"></pre>
-  <div id="cursor">_</div>
-  
-  
-</div>
+  <!-- Terms Button -->
+  <button class="terms-btn" onclick="openTerms()">
+    <i class="fas fa-shield-alt"></i> Terms & Info
+  </button>
+
+  <!-- Terms Popup -->
+  <div class="terms-overlay" id="termsOverlay" onclick="closeTermsOutside(event)">
+    <div class="terms-box">
+      <div class="terms-header">
+        <h2><i class="fas fa-shield-alt"></i> Terms & Information</h2>
+        <button class="terms-close" onclick="closeTerms()">×</button>
+      </div>
+      <div class="terms-body">
+        <div class="notice-badge">
+          <i class="fas fa-info-circle"></i>
+          <span>This page displays live browser &amp; device info for demonstration only. <strong>No data is collected,
+              stored, or transmitted</strong> to any server.</span>
+        </div>
+        <h3>#Live Display Panel</h3>
+        <p>The side panels show real-time browser session info (browser type, timezone, screen resolution, network).
+          This data is read from your browser only, never sent anywhere, and cleared when you close the tab.</p>
+        <h3>#Visitor Counter</h3>
+        <p>A single anonymous flag is saved in your browser's localStorage to avoid double-counting. No personal data
+          stored.</p>
+        <h3>#Contact Form</h3>
+        <p>If you submit the WhatsApp form, your name, phone, and message go directly to the site owner via Formspree —
+          used only to respond to you.</p>
+        <h3>#Analytics</h3>
+        <p>Google Analytics (GA4) tracks aggregate page visits only. No personally identifiable information is
+          collected.</p>
+      </div>
+      <div class="terms-footer">
+        <button onclick="closeTerms()">Got it, thanks!</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="crt">
+    <pre id="tl"></pre>
+    <pre id="tr"></pre>
+  </div>
 
 
   <div class="linkedin-card">
     <div class="cover-section">
+
+
       <img id="cover-img" alt="Cover Image" class="cover-img">
-      <div id="tsparticles" class="particles-overlay"></div>
     </div>
 
     <div class="profile-info-container">
@@ -58,7 +93,9 @@
           <a class="social-btn whatsapp" onclick="showPopup(event)"><i class="fab fa-whatsapp"></i> WhatsApp</a>
           <a class="social-btn portfolio" target="_blank"><i class="fas fa-briefcase"></i> Portfolio</a>
           <a class="social-btn email" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+
         </div>
+        
       </div>
     </div>
 
@@ -84,7 +121,7 @@
     </div>
 
     <footer>
-      &copy; 2025 | <span id="footer-name">Loading...</span> |
+      &copy; 2020-2025 | <span id="footer-name">Loading...</span> |
       <span id="visitCount">Loading visits...</span>
     </footer>
   </div>
@@ -100,23 +137,24 @@
       appId: "1:168086635691:web:eedec947d385a3b53ae3ee"
     };
 
+
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-   
-const counterRef = db.ref("siteData/visitorCount");
 
-// Only count if this browser has never visited before
-if (!localStorage.getItem("ruturaj_visited")) {
-  counterRef.transaction(current => (current || 0) + 1);
-  localStorage.setItem("ruturaj_visited", "yes");
-}
+    const counterRef = db.ref("siteData/visitorCount");
 
-// Always show live count
-counterRef.on("value", snapshot => {
-  const count = snapshot.val() || 0;
-  document.getElementById("visitCount").textContent = `[Total Visitors: ${count}]`;
-});
+    // Only count if this browser has never visited before
+    if (!localStorage.getItem("ruturaj_visited")) {
+      counterRef.transaction(current => (current || 0) + 1);
+      localStorage.setItem("ruturaj_visited", "yes");
+    }
+
+    // Always show live count
+    counterRef.on("value", snapshot => {
+      const count = snapshot.val() || 0;
+      document.getElementById("visitCount").textContent = `[Total Visitors: ${count}]`;
+    });
 
     const siteRef = db.ref("siteData");
     siteRef.once("value").then(snapshot => {
@@ -132,7 +170,18 @@ counterRef.on("value", snapshot => {
       document.querySelector('meta[name="keywords"]').setAttribute("content", meta.keywords || "");
 
       document.getElementById("name").textContent = profile.name || "Name not found";
-      document.getElementById("title").textContent = `${profile.title || "Title"} | ${profile.location || ""}`;
+      const titleEl = document.getElementById("title");
+      const fullTitle = `${profile.title || "Title"} | ${profile.location || ""}`;
+      let i = 0;
+      titleEl.textContent = "";
+      const typeInterval = setInterval(() => {
+        titleEl.textContent += fullTitle[i];
+        i++;
+        if (i >= fullTitle.length) {
+          clearInterval(typeInterval);
+          titleEl.classList.add("typing-done");
+        }
+      }, 55);
       document.getElementById("footer-name").textContent = profile.name || "";
       document.getElementById("popup-name").textContent = profile.name || "";
       document.getElementById("popup-message").textContent = meta.popupMessage || "";
@@ -196,6 +245,16 @@ counterRef.on("value", snapshot => {
             alert("Submission failed. Try again later.");
           });
       });
+      // Now Playing
+const np = data.nowPlaying || {};
+if (np.active && np.song) {
+  const widget = document.getElementById("nowPlaying");
+  document.getElementById("npSong").textContent   = np.song   || "—";
+  document.getElementById("npArtist").textContent = np.artist || "—";
+  document.getElementById("npCover").src          = np.cover  || "";
+  widget.href = np.url || "#";
+  widget.style.display = "flex";
+}
     });
 
     function showPopup(event) {
@@ -207,200 +266,123 @@ counterRef.on("value", snapshot => {
       document.getElementById("popup").style.display = "none";
     }
 
-    tsParticles.load("tsparticles", {
-      fullScreen: { enable: false },
-      background: { color: "transparent" },
-      fpsLimit: 80,
-      particles: {
-        number: { value: 250, density: { enable: true, area: 800 } },
-        color: {
-          value: ["#ffffff", "#8e44ad", "#00ffff", "#ff4ecb", "#eb5600", "#f39c12", "#2ecc71", "#3498db", "#e74c3c"]
-        },
-        shape: { type: "circle" },
-        links: {
-          enable: true, distance: 80, color: "#eb5600", opacity: 0.8, width: 1
-        },
-        opacity: {
-          value: 0.7, random: true, anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
-        },
-        size: {
-          value: { min: 1.5, max: 5 }, random: true,
-          anim: { enable: true, speed: 4, size_min: 1, sync: false }
-        },
-        move: {
-          enable: true, speed: 0.8, direction: "top", random: true,
-          straight: false, outModes: { default: "out" },
-          trail: { enable: true, length: 3, fillColor: "transparent" }
-        },
-        rotate: {
-          value: 0, random: true, direction: "clockwise",
-          animation: { enable: true, speed: 5 }
-        }
-      },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: ["repulse", "bubble"] },
-          onClick: { enable: true, mode: ["push", "repulse"] }
-        },
-        modes: {
-          bubble: { distance: 100, size: 3, duration: 2, opacity: 1, color: "#ffffff" },
-          repulse: { distance: 100, duration: 0.4 },
-          push: { quantity: 4 }
-        }
-      }
-    });
 
   </script>
 
   <script>
-    (async function(){
+    function openTerms() { document.getElementById("termsOverlay").classList.add("active"); }
+    function closeTerms() { document.getElementById("termsOverlay").classList.remove("active"); }
+    function closeTermsOutside(e) { if (e.target === document.getElementById("termsOverlay")) closeTerms(); }
+  </script>
 
+  <script>
+    (async function () {
+      const ua = navigator.userAgent;
+      const lang = navigator.language;
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const dtype = /Mobi|Android/i.test(ua) ? "Mobile" : "Desktop";
+      const cores = navigator.hardwareConcurrency || "N/A";
+      const ram = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "N/A";
+      const touch = "ontouchstart" in window ? "Yes" : "No";
+      const screenR = screen.width + "×" + screen.height;
+      const dpr = window.devicePixelRatio;
+      const cookies = navigator.cookieEnabled ? "Yes" : "No";
+      const online = navigator.onLine ? "Online" : "Offline";
 
+      let browser = "Unknown";
+      if (ua.includes("Edg")) browser = "Edge";
+      else if (ua.includes("Chrome")) browser = "Chrome";
+      else if (ua.includes("Firefox")) browser = "Firefox";
+      else if (ua.includes("Safari") && !ua.includes("Chrome")) browser = "Safari";
 
-const ua = navigator.userAgent;
-const lang = navigator.language;
-const langs = navigator.languages.join(", ");
-const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const net = navigator.connection || {};
+      const netType = net.effectiveType || "N/A";
+      const down = net.downlink ? net.downlink + " Mbps" : "N/A";
+      const rtt = net.rtt ? net.rtt + " ms" : "N/A";
 
-const deviceType = /Mobi|Android/i.test(ua) ? "Mobile" : "Desktop";
-const cores = navigator.hardwareConcurrency || "N/A";
-const ram = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "Unavailable";
-const orient = (screen.orientation && screen.orientation.type) || "Portrait";
-const touch = "ontouchstart" in window ? "Yes" : "No";
-const resolution = screen.width + " x " + screen.height;
-const dpi = window.devicePixelRatio;
-const maxTouch = navigator.maxTouchPoints || 0;
-const cookies = navigator.cookieEnabled ? "Enabled" : "Disabled";
-const dnt = navigator.doNotTrack == "1" ? "Enabled" : "Disabled";
+      let country = "—", city = "—", ip = "—";
+      try {
+        const r = await fetch("https://ipapi.co/json/");
+        const d = await r.json();
+        country = d.country_name || "—";
+        city = d.city || "—";
+        ip = d.ip || "—";
+      } catch (e) { }
 
+      const feat = {
+        WebGL: !!window.WebGLRenderingContext,
+        WebRTC: !!window.RTCPeerConnection,
+        WebSocket: "WebSocket" in window,
+        Camera: !!navigator.mediaDevices,
+        Bluetooth: "bluetooth" in navigator,
+        PWA: "serviceWorker" in navigator,
+      };
 
-let browser = "Unknown", engine="Unknown";
+      let clicks = 0, keys = 0, scrolls = 0, moves = 0;
+      document.addEventListener("click", () => clicks++);
+      document.addEventListener("keydown", () => keys++);
+      document.addEventListener("scroll", () => scrolls++);
+      document.addEventListener("mousemove", () => moves++);
 
-if(ua.includes("Chrome")){ browser="Chrome"; engine="Blink"; }
-if(ua.includes("Firefox")){ browser="Firefox"; engine="Gecko"; }
-if(ua.includes("Edg")){ browser="Edge"; engine="Blink"; }
-if(ua.includes("Safari") && !ua.includes("Chrome")){ browser="Safari"; engine="WebKit"; }
+      const start = Date.now();
 
-const net = navigator.connection || {};
-const netType = net.effectiveType || "Unknown";
-const down = net.downlink ? net.downlink + " Mbps" : "N/A";
-const rtt = net.rtt ? net.rtt + " ms" : "N/A";
-const online = navigator.onLine ? "Online" : "Offline";
+      setInterval(() => {
+        const elapsed = Math.floor((Date.now() - start) / 1000) + "s";
 
+        document.getElementById("tl").textContent =
+          "◈ BROWSER & LOCATION\n\n" +
+          "Browser : " + browser + "\n" +
+          "Language: " + lang + "\n" +
+          "Timezone: " + tz + "\n" +
+          "Cookies : " + cookies + "\n\n" +
+          "Country : " + country + "\n" +
+          "City    : " + city + "\n" +
+          "IP      : " + ip + "\n\n" +
+          "Time    : " + new Date().toLocaleTimeString();
 
-let country="India", city="Unknown", ip="Hidden";
+        document.getElementById("tr").textContent =
+          "◈ DEVICE & NETWORK\n\n" +
+          "Type    : " + dtype + "\n" +
+          "Cores   : " + cores + "\n" +
+          "RAM     : " + ram + "\n" +
+          "Touch   : " + touch + "\n" +
+          "Screen  : " + screenR + " x" + dpr + "\n\n" +
+          "Network : " + netType + "\n" +
+          "Speed   : " + down + "\n" +
+          "Latency : " + rtt + "\n" +
+          "Status  : " + online + "\n\n" +
+          "◈ FEATURES\n\n" +
+          "WebGL   : " + feat.WebGL + "\n" +
+          "WebRTC  : " + feat.WebRTC + "\n" +
+          "WSocket : " + feat.WebSocket + "\n" +
+          "Camera  : " + feat.Camera + "\n" +
+          "BT      : " + feat.Bluetooth + "\n" +
+          "PWA     : " + feat.PWA + "\n\n" +
+          "◈ ACTIVITY\n\n" +
+          "Clicks  : " + clicks + "\n" +
+          "Keys    : " + keys + "\n" +
+          "Scrolls : " + scrolls + "\n" +
+          "Moves   : " + moves + "\n" +
+          "On Page : " + elapsed;
+      }, 1000);
+    })();
+  </script>
 
-try{
-  let data = {};
-try {
-  const res = await fetch("https://ipapi.co/json/", { mode: "cors" });
-  data = await res.json();
-} catch(e){}
+  <script>
+    document.addEventListener("mousemove", (e) => {
+      if (Math.random() > 0.35) return; // density control — har move pe nahi, thoda random
 
-  country = data.country_name || "India";
-  city = data.city || "Unknown";
-  ip = data.ip || "Hidden";
-}catch(e){}
+      const span = document.createElement("span");
+      const isOne = Math.random() > 0.5;
+      span.className = "cursor-trail " + (isOne ? "one" : "zero");
+      span.textContent = isOne ? "1" : "0";
+      span.style.left = (e.clientX + Math.random() * 16 - 8) + "px";
+      span.style.top = (e.clientY + Math.random() * 16 - 8) + "px";
+      document.body.appendChild(span);
 
-
-
-const features = {
-  WebGL: !!window.WebGLRenderingContext,
-  WebRTC: !!window.RTCPeerConnection,
-  WebSocket: "WebSocket" in window,
-  Camera: !!navigator.mediaDevices,
-  Microphone: !!navigator.mediaDevices,
-  Clipboard: !!navigator.clipboard,
- Bluetooth: "bluetooth" in navigator,
-  Payments: !!window.PaymentRequest,
-  PWA: "serviceWorker" in navigator,
-  WebAuthn: !!window.PublicKeyCredential
-};
-
-
-
-let clicks=0, keys=0, scrolls=0, moves=0;
-document.onclick = ()=>clicks++;
-document.onkeydown = ()=>keys++;
-document.onscroll = ()=>scrolls++;
-document.onmousemove = ()=>moves++;
-
-const start = Date.now();
-
-
-setInterval(()=>{
-
-const timeOnPage = Math.floor((Date.now()-start)/1000)+"s";
-
-document.getElementById("tl").innerHTML = `
-<BROWSER & LOCATION>
-
-Browser: ${browser}
-Engine: ${engine}
-Cookies: ${cookies}
-Do Not Track: ${dnt}
-
-Language: ${lang}
-Languages: ${langs}
-Timezone: ${tz}
-
-Country: ${country}
-City: ${city}
-IP: ${ip}
-
-Local Time: ${new Date().toLocaleTimeString()}
-`;
-
-document.getElementById("tr").innerHTML = `
-<DEVICE & NETWORK>
-
-Device: ${deviceType}
-CPU Cores: ${cores}
-RAM: ${ram}
-Touch: ${touch}
-Resolution: ${resolution}
-Pixel Ratio: ${dpi}
-Orientation: ${orient}
-Max Touch: ${maxTouch}
-
-Network: ${netType}
-Speed: ${down}
-Latency: ${rtt}
-Status: ${online}
-
-<FEATURES>
-
-WebGL: ${features.WebGL}
-WebRTC: ${features.WebRTC}
-WebSocket: ${features.WebSocket}
-Camera: ${features.Camera}
-Mic: ${features.Microphone}
-Clipboard: ${features.Clipboard}
-Bluetooth: ${features.Bluetooth}
-Payments: ${features.Payments}
-PWA: ${features.PWA}
-WebAuthn: ${features.WebAuthn}
-
-<USER ACTIVITY>
-
-Clicks: ${clicks}
-Keys: ${keys}
-Scrolls: ${scrolls}
-Mouse Moves: ${moves}
-Time On Page: ${timeOnPage}
-`;
-
-},1000);
-
-})();
-
+      setTimeout(() => span.remove(), 700);
+    });
   </script>
 </body>
 
 </html>
-
-
-
-
-
-
